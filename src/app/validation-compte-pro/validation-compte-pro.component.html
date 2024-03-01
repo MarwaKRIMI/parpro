@@ -1,0 +1,42 @@
+<ngx-alerts></ngx-alerts>
+<div class="row header">
+  <div class="col-md-1 col-sm-1 col-xs-offset-0  col-xs-1 sablier">
+    <img src="../../assets/img/vecteur-sablier.gif" width="80px" height="100px">
+  </div>
+  <div class="col-md-11 col-xs-offset-4 col-md-offset-0 col-sm-11 col-xs-11 validation-header">
+    <h4 class="validation-compte-pro-header">
+      {{'presque-fini' | translate}}
+    </h4>
+  </div>
+
+</div>
+<div class="row body">
+
+  <div class="col-md-7 col-sm-8">
+    <div>
+      <h4> {{'confirm-email-pro' | translate}}</h4>
+      <p>
+        <br>
+        {{'send-email' | translate}} <strong><a id="email-pro" href=''>{{email}}</a></strong>.<br>
+        {{'click-link' | translate}}</p>
+
+    </div>
+    <br><br><br>
+    <div>
+      <h4>{{'courrier-electronique' | translate}} </h4>
+
+      <p>
+        <br>
+        {{'expediteur-time' | translate}}<br>
+        {{'not-receive-email' | translate}}<br>
+
+        <br>
+        <a id="change-mail-pro" href="" [routerLink]="['/register/professionnel']">{{'change-email' | translate}}</a>
+        | <a id="activation-mail-pro" (click)="active_email(email)">{{'link-activation' | translate}}</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4  hidden-xs" id="pro-man">
+    <img src="../../assets/img/pro-man.png" width="200px" height="500px" class="pro-man" />
+  </div>
+</div>

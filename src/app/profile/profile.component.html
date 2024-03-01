@@ -1,0 +1,251 @@
+<ngx-alerts></ngx-alerts>
+
+<!--Profile professionnel interface-->
+<!--Header professionnel-->
+<div class="row btn-container" *ngIf="authService.getUserRole() == 'Professional'">
+  <div class="pro-my-demand">
+    <a class="btn btn-primary btn-xs demand-project-btn" href="" [routerLink]="['/demandes']">{{'projet-disponibles' | translate}}</a>
+  </div>
+  <div class="pro-button-demand">
+    <a class="btn btn-primary btn-xs demand-accepted-btn" href="#" [routerLink]="['/mes-demandes-acceptees']">
+      {{'projet-accept' | translate}}</a>
+  </div>
+</div>
+<div *ngIf="authService.getUserRole() == 'Professional'" class="row" id="profile">
+  <div *ngIf="authService.getUserRole() == 'Professional'" class="col-md-8 col-sm-6 pro-acount">
+    <!--Profile professionnel-->
+    <div *ngIf="authService.getUserRole() == 'Professional'" class="col-md-4" width="100%">
+      <div class="card-profile">
+        <p class="name">{{professional.companyName}}</p>
+        <div class="img-container">
+          <img [src]="user.avatar ? user.avatar.webPath : '../../assets/img/person-empty.png'">
+        </div>
+        <span class="lang">{{'Langues' | translate}}: </span>
+        <div class="languages" *ngFor='let lang of user.languages'>
+          <!-- <span>{{lang.name}} &nbsp;</span> -->
+          <div *ngIf="lang.name=='Turc'"><span class="flag-icon flag-icon-tr"></span></div>
+          <div *ngIf="lang.name=='Français'"><span class="flag-icon flag-icon-fr"></span></div>
+          <div *ngIf="lang.name=='Italien'"><span class="flag-icon flag-icon-it"></span></div>
+          <div *ngIf="lang.name=='Anglais'"><span class="flag-icon flag-icon-gb eng"></span></div>
+          <div *ngIf="lang.name=='Portugais'"><span class="flag-icon flag-icon-pt"></span></div>
+          <div *ngIf="lang.name=='Espagnol'"><span class="flag-icon flag-icon-es"></span></div>
+          <div *ngIf="lang.name=='Néerlandais'"><span class="flag-icon flag-icon-nl"></span></div>
+          <div *ngIf="lang.name=='Polonais'"><span class="flag-icon flag-icon-pl"></span></div>
+          <div *ngIf="lang.name=='Norvégien'"><span class="flag-icon flag-icon-no"></span></div>
+          <div *ngIf="lang.name=='Russe'"><span class="flag-icon flag-icon-ru"></span></div>
+          <div *ngIf="lang.name=='Suédois'"><span class="flag-icon flag-icon-se"></span></div>
+          <div *ngIf="lang.name=='Arabe'"><span class="flag-icon flag-icon-dz"></span></div>
+          <div *ngIf="lang.name=='Allemand'"><span class="flag-icon flag-icon-de"></span></div>
+        </div>
+      </div>
+    </div>
+    <!--Coordonnées professionnel-->
+    <div *ngIf="authService.getUserRole() == 'Professional'" class="col-md-8 coord-pro">
+      <h4 class="bold-pro">{{'coords' | translate}} : </h4>
+      <div class="col-md-8" width="100%">
+        <form class="form-group">
+          <div class="form-group" width="100%">
+            <label for="name">{{'prenom' | translate}} : </label>
+            <input id="lastName" type="lastName" class="form-control" value="{{user.firstName}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="name">{{'nom' | translate}} : </label>
+            <input id="name" type="name" class="form-control" value="{{user.lastName}}" disabled>
+          </div>
+          <div *ngIf="authService.getUserRole() == 'Professional'" class="form-group">
+            <label for="companyName">{{'raison-sociale' | translate}} : </label>
+            <input class="form-control" value="{{professional.companyName}}" disabled>
+          </div>
+          <div *ngIf="authService.getUserRole() == 'Professional'" class="form-group">
+            <label for="city">{{'ville' | translate}} : </label>
+            <input class="form-control" value="{{user.address.city}}" disabled>
+          </div>
+          <div *ngIf="authService.getUserRole() == 'Professional'" class="form-group" width="100%">
+            <label for="phone">{{'phone-number' | translate}} : </label>
+            <input class="form-control" value="{{user.phone}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="email">{{'email' | translate}} : </label>
+            <input id="email" type="email" class="form-control" value="{{user.email}}" disabled>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Professionnel right side-->
+  <div class="col-md-4 right-side-pro" align="center" *ngIf="authService.getUserRole() == 'Professional'">
+    <h5 *ngIf="professional.status!=2" class="right-side-header-title-pro"> {{'venez-vite' | translate}} :</h5><br>
+    <h1 *ngIf="professional.status!=2"><strong>START UP</strong></h1>
+    <img src="../../assets/img/persons.png" class="img-responsive" alt="" width="100%" height="100%">
+    <a *ngIf="professional.status!=2" href='' [routerLink]="['/tarif']"><button class="btn btn-primary tarif">{{'tarif' | translate}}</button></a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Profile particulier interface-->
+
+<div *ngIf="authService.getUserRole() == 'Particular'" class="row part-row" id="profile">
+  <div class="row btn-container-part">
+
+    <div class="col-md-4 col-sm-10">
+      <a class="btn btn-primary btn-xs add-demand" href="#" [routerLink]="['/demande/particulier']">{{'add-new-demand' | translate}}</a>
+    </div>
+    <div class="col-md-4 col-sm-10">
+      <a class="btn btn-primary btn-xs meilleur-pro" href="#" [routerLink]="['/recherche']"> {{'find-pro' | translate}}</a>
+    </div>
+    <div class="col-md-4 col-sm-10">
+      <a class="btn btn-primary btn-xs pro-inscription" href="#" [routerLink]="['/register/professionnel']"> {{'professional-inscription' | translate}}</a>
+    </div>
+  </div>
+
+
+  <!--Profile particulier-->
+  <div *ngIf="authService.getUserRole() == 'Particular'" class="col-md-7">
+    <div *ngIf="authService.getUserRole() == 'Particular'" class="col-md-5 col-sm-6 col-xs-12 part-acount">
+      <div class="card-profile">
+
+        <div class="img-container">
+          <img [src]="user.avatar ? user.avatar.webPath : '../../assets/img/person-empty.png'">
+        </div>
+        <span class="lang">{{'Langues' | translate}}: </span>
+        <div class="languages" *ngFor='let lang of user.languages'>
+          <!-- <span>{{lang.name}} &nbsp;</span> -->
+          <div *ngIf="lang.name=='Turc'"><span class="flag-icon flag-icon-tr"></span></div>
+          <div *ngIf="lang.name=='Français'"><span class="flag-icon flag-icon-fr"></span></div>
+          <div *ngIf="lang.name=='Italien'"><span class="flag-icon flag-icon-it"></span></div>
+          <div *ngIf="lang.name=='Anglais'"><span class="flag-icon flag-icon-gb eng"></span></div>
+          <div *ngIf="lang.name=='Portugais'"><span class="flag-icon flag-icon-pt"></span></div>
+          <div *ngIf="lang.name=='Espagnol'"><span class="flag-icon flag-icon-es"></span></div>
+          <div *ngIf="lang.name=='Néerlandai'"><span class="flag-icon flag-icon-nl"></span></div>
+          <div *ngIf="lang.name=='Polonais'"><span class="flag-icon flag-icon-pl"></span></div>
+          <div *ngIf="lang.name=='Novrégien'"><span class="flag-icon flag-icon-no"></span></div>
+          <div *ngIf="lang.name=='Russe'"><span class="flag-icon flag-icon-ru"></span></div>
+          <div *ngIf="lang.name=='Suédois'"><span class="flag-icon flag-icon-se"></span></div>
+          <div *ngIf="lang.name=='Arabe'"><span class="flag-icon flag-icon-dz"></span></div>
+          <div *ngIf="lang.name=='Allemand'"><span class="flag-icon flag-icon-de"></span></div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!--Coordonnées particulier-->
+
+    <div *ngIf="authService.getUserRole() == 'Particular'" class="col-md-7  col-sm-6 col-xs-12 coord-part">
+      <h4 class="bold part">{{'coords' | translate}} :</h4>
+
+      <form>
+        <div class="form-group">
+          <label for="lastName">{{'prenom' | translate}} : </label>
+          <input id="name" type="name" class="form-control" value="{{user.firstName}}" disabled>
+
+        </div>
+        <div class="form-group">
+          <label for="firstName">{{'nom' | translate}} : </label>
+          <input id="lastName" type="lastName" class="form-control" value="{{user.lastName}}" disabled>
+        </div>
+
+        <div *ngIf="authService.getUserRole() == 'Particular'" class="form-group">
+          <label for="city">{{'ville' | translate}} :</label>
+          <input class="form-control" value="{{user.address.city}}" disabled>
+        </div>
+        <div *ngIf="authService.getUserRole() == 'Particular'" class="form-group">
+          <label for="phone">{{'phone-number' | translate}} : </label>
+          <input class="form-control" value="{{user.phone}}" disabled>
+        </div>
+        <div class="form-group">
+          <label for="email">{{'email' | translate}} : </label>
+          <input id="email" type="email" class="form-control" value="{{user.email}}" disabled>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+  <!--Particular right side-->
+  <div class="col-md-5 col-sm-6 col-xs-12 part-demand-account" *ngIf="authService.getUserRole() == 'Particular'">
+    <div class="row ">
+
+
+
+      <div class="request-list col-md-12">
+        <div class="request" *ngFor='let demand of demands'>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object"
+                  [src]="demand.images.length ? demand.images[0].webPath : '../../assets/img/avater_upload_part.png' "
+                  alt="">
+              </a>
+            </div>
+            <div class="media-body">
+              <p>{{'demand' | translate}} : {{demand?.description}}</p>
+              <p>{{'ville' | translate}} : {{demand?.address?.city}}</p>
+              <ul class="tags tags list-inline">
+                <li>{{'contact' | translate}} : -</li>
+                <li>{{'proposition' | translate}} : {{demand?.participantsCount}}</li>
+              </ul>
+            </div>
+            <div class="media-footer">
+              <div class="row">
+                <div class="col-md-4 text-center">
+                  <a [class.disabled]="isAffected" href=""
+                    [routerLink]="['/demande/particulier', demand.id]">{{'modify' | translate}}</a>
+                </div>
+                <div class="col-md-4 text-center">
+                  <a>{{'cours' | translate}}</a>
+                </div>
+                <div class="col-md-4 text-center">
+                  <a [routerLink]="" data-toggle="modal" data-target="#DeleteDemand"
+                    (click)="listId = demand.id">{{'supprimer' | translate}}</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="DeleteDemand" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">{{'confirm-suppression' | translate}}</h4>
+                  <!-- Add #closeBtn -->
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Modal body -->
+                  <h6>{{'confirm-suppression-question' | translate}} ?</h6>
+                </div>
+                <div class="modal-footer">
+                  <!-- Modal footer -->
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{{'no' | translate}}</button>
+                  <button [routerLink]="" type="submit" class="btn btn-primary oui" data-dismiss="modal"
+                    (click)="deleteDemande(listId)">{{'yes' | translate}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

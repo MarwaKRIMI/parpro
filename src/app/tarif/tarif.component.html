@@ -1,0 +1,127 @@
+<ngx-alerts></ngx-alerts>
+<h2 class="tarif-header"> {{'tarif' | translate}}</h2>
+<div class="row">
+  <div class="col-md-6">
+    <h3 class="convince-title"> {{'convainquez' | translate}} : </h3>
+    <p class="first-paragraph">
+      {{'first-line-tarif' | translate}} <br>
+      {{'second-line-tarif' | translate}}<br>
+      {{'third-line-tarif' | translate}} <br>
+      {{'fourth-line-tarif' | translate}}
+    </p>
+    <p class="startup-offer">
+      {{'notre-offre' | translate}} : <b> START UP </b><br>
+      <div class="tarif-offre">
+        &#x25B6;{{'startup-offre' | translate}}.<sup>(1)</sup>
+      </div>
+  </div>
+  <div class="col-md-6">
+  </div>
+</div>
+<h3 class="advantages-title">{{'avantage-adhesion-parpro' | translate}} </h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="advantages-ligns">
+      <img src="../../assets/img/icon_siteweb_Top Du Marché.gif" width="40px" height="40px">&nbsp;&nbsp; {{'top-marche' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp;{{'demande-projets' | translate}}
+    </div>
+    <div class="advantages-ligns">
+      <img src="../../assets/img/icon_siteweb_Contact direct avec le client.gif" width="40px" height="40px">&nbsp;&nbsp;
+     {{'contact-client' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp; {{'contact-direct-client' | translate}}
+    </div>
+    <div class="advantages-ligns">
+      <img src="../../assets/img/icon_siteweb_Site web.gif" width="40px" height="40px">&nbsp;&nbsp; {{'website' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp; {{'prestation-entreprise' | translate}}
+    </div>
+    <div class="advantages-ligns">
+      <img src="../../assets/img/icon_siteweb_Fonction Radar.gif" width="40px" height="40px">&nbsp;&nbsp; {{'fonction-radar' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp; {{'notification' | translate}}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="advantages-ligns-right">
+      <img src="../../assets/img/icon_siteweb_Application Mobile.gif" width="40px" height="40px">&nbsp;&nbsp;
+      {{'app-mobile' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp; {{'find-request-mobile' | translate}}
+    </div>
+    <div class="advantages-ligns-right">
+      <img src="../../assets/img/icon_siteweb_Réseau Partenaire Solide.gif" width="40px" height="40px">&nbsp;&nbsp;
+      {{'reseau-partenaire' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp;{{'reduction-partenaire' | translate}}
+    </div>
+    <div class="advantages-ligns-right">
+      <img src="../../assets/img/icon_siteweb_Service sans souci.gif" width="40px" height="40px">&nbsp;&nbsp; {{'service-sans-souci' | translate}}
+    </div>
+    <div class="advantages-second-ligns">
+      &#x25B6; &nbsp; {{'equipe-consultant'| translate}}
+    </div>
+  </div>
+</div>
+<div class="row base">
+  <div class="col-md-6">
+    <p class="last-text">
+
+      (1){{'note-tarif-1' | translate}}
+
+    </p><br><br><br>
+    <p class="last-text-pay">
+      (*) {{'note-tarif-2' | translate}}</p>
+  </div>
+  <div class="col-md-6 pay">
+    <form #form action={{paymentData.serveurOK}} method='post'>
+      <input type="hidden" name="PBX_SITE" value="{{paymentData.PBX_SITE}}">
+      <input type="hidden" name="PBX_RANG" value="{{paymentData.PBX_RANG}}">
+      <input type="hidden" name="PBX_IDENTIFIANT" value="{{paymentData.PBX_IDENTIFIANT}}">
+      <input type="hidden" name="PBX_TOTAL" value="{{paymentData.PBX_TOTAL}}">
+      <input type="hidden" name="PBX_DEVISE" value="{{paymentData.PBX_DEVISE}}">
+      <input type="hidden" name="PBX_CMD" value="{{paymentData.PBX_CMD}}">
+      <input type="hidden" name="PBX_PORTEUR" value="{{paymentData.PBX_PORTEUR}}">
+      <input type="hidden" name="PBX_REPONDRE_A" value="{{paymentData.PBX_REPONDRE_A}}">
+      <input type="hidden" name="PBX_RETOUR" value="{{paymentData.PBX_RETOUR}}">
+      <input type="hidden" name="PBX_EFFECTUE" value="{{paymentData.PBX_EFFECTUE}}">
+      <input type="hidden" name="PBX_ANNULE" value="{{paymentData.PBX_ANNULE}}">
+      <input type="hidden" name="PBX_REFUSE" value="{{paymentData.PBX_REFUSE}}">
+      <input type="hidden" name="PBX_HASH" value="{{paymentData.PBX_HASH}}">
+      <input type="hidden" name="PBX_TIME" value="{{paymentData.PBX_TIME}}">
+      <input type="hidden" name="PBX_HMAC" value="{{paymentData.PBX_HMAC}}">
+      <div class="fa fa-hand-o-right payment-hand"></div> <input type="submit" class="btn btn-primary"
+        style="position:relative;" value="{{'paiement' | translate}}" (click)="form.submit()" [disabled]="!checked">
+    </form>
+
+    <input class="col-md-1" type="checkbox" name="isChecked" [(ngModel)]="checked">
+    <p class="CCV_payement">{{'cond-tarif-1' | translate}} <a id="CCV_payement" href='' data-toggle="modal" data-target="#CGV"
+        [routerLink]="['/conditions-generales-vente']">{{'CGV' | translate}}</a></p>
+  </div>
+
+</div>
+
+<!--Modal CGV-->
+<div class="modal fade" id="CGV" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- Add #closeBtn -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal body -->
+        <fws-cond-gen-ventes></fws-cond-gen-ventes>
+      </div>
+    </div>
+  </div>
+</div>

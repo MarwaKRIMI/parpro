@@ -1,0 +1,286 @@
+.demand-accept-title {
+  margin-bottom: 50px;
+}
+
+li {
+  list-style-type: none;
+}
+
+div {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.header {
+  background-color: #2bbfe5;
+  color: white;
+  font-size: 1.5em;
+  padding: 1rem;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+
+.table-users {
+  border: 1px solid #327a81;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  max-width: calc(100% - 2em);
+  margin: 1em auto;
+  overflow: hidden;
+  width: 800px;
+}
+
+table {
+  width: 100%;
+}
+
+table td,
+table th {
+  color: black;
+  padding: 10px;
+
+}
+
+table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table td:last-child {
+  font-size: 0.95em;
+  line-height: 1.4;
+  text-align: left;
+}
+
+table th {
+  background-color: #ffffff;
+  font-weight: bolder;
+}
+
+table tr:nth-child(2n) {
+  background-color: white;
+}
+
+table tr:nth-child(2n+1) {
+  background-color: #ffffff;
+}
+
+
+#calendrier {
+  list-style-type: none;
+
+}
+
+#day {
+  list-style-type: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  color: gray;
+  font-weight: bold;
+
+}
+
+#month {
+  list-style-type: none;
+  border: 1px solid transparent;
+  background-color: #d3d3d3;
+  color: black;
+  font-weight: bold;
+  border-top: 2px solid gray;
+
+}
+
+th {
+  text-align: center;
+}
+
+
+.text-loader {
+  font-size: 20px;
+  color: white;
+}
+
+.projet-btn {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -20px;
+  margin-bottom: 50px;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .btn-header {
+    margin-bottom: 5%
+  }
+
+  .detail-demand {
+    margin-left: 10% !important
+  }
+
+  .identifiant {
+    text-align: center !important
+  }
+
+  .thumbnail {
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    color: #001847;
+    background-color: white
+  }
+
+  li,
+  p,
+  .smaller {
+    text-align: justify;
+  }
+
+  .date {
+    text-align: center !important;
+  }
+
+  .btn-header {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    text-decoration: none;
+    margin-bottom: 0%
+  }
+
+  .date {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .adresse {
+    margin-left: 5px;
+  }
+
+  .ville {
+    margin-left: 10px;
+  }
+
+  .calendrier {
+    text-align: center;
+  }
+
+}
+time.icon {
+  font-size: 1em;
+  /* change icon size */
+  display: block;
+  position: relative;
+  width: 4em;
+  height: 4em;
+  background-color: #fff;
+  margin: 2em auto;
+  border-radius: 0.6em;
+  box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: rotate(0deg) skewY(0deg);
+  -webkit-transform-origin: 50% 10%;
+  transform-origin: 50% 10%;
+}
+
+time.icon * {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+time.icon strong {
+  position: absolute;
+  top: 0;
+  padding: 0.4em 0;
+  color: #fff;
+  background-color: #fd9f1b;
+  border-bottom: 1px dashed #f37302;
+  box-shadow: 0 2px 0 #fd9f1b;
+}
+
+time.icon em {
+  position: absolute;
+  bottom: 0.3em;
+  color: #fd9f1b;
+}
+
+time.icon span {
+  width: 100%;
+  font-size: 1.4em;
+  letter-spacing: -0.05em;
+  padding-top: 1.6em;
+  color: #2f2f2f;
+}
+
+#description-demand {
+
+  text-align: justify;
+  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+time {
+  margin-top: 0px !important
+}
+
+.thumbnail {
+  border-radius: 25px;
+  margin-bottom: 20px
+}
+
+a:focus {
+  text-decoration: none !important
+}
+
+.city {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1em;
+  margin-top: -5%
+}
+
+.thumbnail-description {
+  text-align: center;
+  color: gray
+}
+
+.detail-demand {
+  background-color: transparent;
+  color: #001847;
+  border: 1px solid #001847;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 12%;
+}
+@media only screen and (height: 1024px) and (width: 768px) {
+
+  .thumbnail .caption{
+padding: 0px 
+  }
+  .cardd{
+    padding-left:5px !important;
+    padding-right:5px !important
+  }
+}
+@media only screen and (height: 1366px) and (width: 1024px) {
+  .cardd{
+    padding:0!important;
+
+  }
+}

@@ -1,0 +1,140 @@
+<ngx-alerts></ngx-alerts>
+<!-- <div class="btn-detail-demand">
+  <a class="btn-detail-demand-projet" href="" [routerLink]="['/demandes']"><button class="btn btn-primary">Mes projets
+      disponibles</button></a>
+  <a class="btn-detail-demand-accept" href="" [routerLink]="['/mes-demandes-acceptees']"><button
+      class="btn btn-primary">Mes
+      projets acceptés</button></a>
+</div> -->
+
+
+
+
+<div class="col-md-11 col-xs-12 col-md-offset-4 panel panel-info">
+  <!-- Coordonnées de l'emetteur -->
+  <div class="row">
+    <div class="col-md-6">
+  <div class="contact">
+    <p class="contact-emetteur"> Coordonnées de l'émetteur du projet</p>
+  </div>
+  <div class="form-group row panel-content">
+    <div id="name">
+      <label class="col-sm-4 col-form-label" >Prénom : </label>
+      <p class="col-sm-8 col-form-label">{{demand?.owner?.firstName}}</p>
+
+    </div >
+    <div id="lastname">
+      <label class="col-sm-4 col-form-label">Nom :</label>
+      <p *ngIf="isAccepted" class="col-sm-8 col-form-label"> {{demand?.owner?.lastName}}</p>
+      <p *ngIf="!isAccepted" class="col-sm-8 col-form-label"> {{demand?.owner?.lastName | slice:0:1}}xxxxxx</p>
+    </div>
+    <div id="phone">
+      <label class="col-sm-4 col-form-label">Téléphone :</label>
+      <p *ngIf="!isAccepted" class="col-sm-8 col-form-label"><a>XX XX XX XX</a></p>
+      <p *ngIf="isAccepted" class="col-sm-8 col-form-label"><a>{{demand?.owner?.phone}}</a></p>
+    </div>
+    <div id="email" >
+      <label class="col-sm-4 col-form-label email">Email :</label>
+      <p *ngIf="!isAccepted" class="col-sm-8 col-form-label"><a>xxxx@xxxxx</a></p>
+      <p *ngIf="isAccepted" class="col-sm-8 col-form-label"><a>{{demand?.owner?.email}}</a></p>
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+    <div class="info-complementary">
+        <p class="info-comp">Carte et informations d'accès</p>
+      </div>
+    <agm-map width="100px" height="100px"
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="8"
+    [disableDefaultUI]="false"
+    [zoomControl]="false">
+    <agm-marker
+    
+        [latitude]="demand?.address?.latitude"
+        [longitude]="demand?.address?.longitude"
+        [markerClickable]="true"
+        [iconUrl] ="
+  {
+    url:'../../assets/img/user_marker.png',
+    scaledSize: {
+        width: 30,
+        height: 40
+    }
+  }"
+   >
+    </agm-marker>
+  
+    <agm-circle 
+        [latitude]="" 
+        [longitude]="" 
+        [radius]="5000"
+        [fillColor]="'red'"
+        [editable]="true">
+       
+    </agm-circle>
+  
+  </agm-map>
+  
+</div>
+</div>
+<!--  
+  <div class="form-group row panel-content">
+  
+  </div> -->
+
+<br><br>
+
+<div class="row">
+  <!--Details du projet-->
+  <div class="project-details">
+    <p class="detail-projet" >{{'project-detail' | translate}}</p>
+  </div>
+
+  <div class="col-md-8">
+      <label class="col-sm-4 col-form-label type" >{{'project-type' | translate}} :</label><br>
+      <p  class="col-sm-8 type-description">{{demand?.title}}</p>
+    
+    </div>
+</div>
+
+<div class="row">
+    <label class="col-sm-4 col-form-label description-demand-title">{{'project-description' | translate}} :</label>
+    <p class="col-md-10 col-form-label description-demand">{{demand?.description}}</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+  <div *ngIf="status==1 && submitted" class="service-payant">
+  {{'service-payant' | translate}}
+  </div>
+  <div *ngIf="status==2 && submitted && full" class="service-payant">
+    {{'demand-accepted-by-5' | translate}}
+  </div>
+  <div *ngIf="!isAccepted" class="form-group row panel-content">
+    <button class="btn btn-info" [ngClass]="{'button-loader button-loader--loading' : loading}"
+      (click)="acceptDemand(demand.id)">{{'obtenir-projet' | translate}}</button>
+  </div>
+  <div *ngIf="isAccepted" class="form-group row panel-content">
+    <button class="btn btn-info" disabled>{{'demand-accept' | translate}}</button>
+  </div>
+</div>
+</div>
+
+<div class="col-md-1 time" >
+    <time datetime="2014-09-20" class="icon">
+        <strong>{{demand?.createdAt | date:'MMM'}} </strong>
+        <span> {{demand?.createdAt | date:'dd'}}</span>
+      </time>
+</div>

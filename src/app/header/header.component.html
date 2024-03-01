@@ -1,0 +1,133 @@
+<ngx-alerts></ngx-alerts>
+<ng-sidebar-container class="sidebar-height">
+  <div ng-sidebar-content>
+    <nav class="header navbar navbar-default header-wrapper">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <i [routerLink]="['connexion']" class="log hidden-md hidden-sm hidden-lg fa fa-sign-in"
+            *ngIf="!authService.getCurrentUserName()" style="font-size:42px;color:white;z-index: 1"> <a href=""></a></i>
+          <button (click)="_toggleSidebar()" type="button" *ngIf="!_opened" class="navbar-toggle" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" class="logo" src="../../assets/img/header/logo.png">
+          </a>
+          <ul class="user-name hidden-lg hidden-md hidden-sm">
+            <li *ngIf="authService.getCurrentUserName()" class="dropdown dropdown-lg">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{authService.getCurrentUserName()}} <b
+                  class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a [routerLink]="authService.getUserRole()=='Professional'? ['compte-pro']:['profil-part'] " href="">
+                    {{'Compte' | translate}}
+                  </a>
+                </li>
+                <li>
+                  <a *ngIf="authService.getUserRole()=='Professional'" href="" [routerLink]="['profil-pro']">
+                    {{'Profil' | translate}}
+                  </a>
+                </li>
+                <!--<li><a href="" *ngIf="authService.getUserRole()=='Professional'" [routerLink]="['a-propos']">A propos</a></li>-->
+                <li><a href="" *ngIf="authService.getUserRole()" [routerLink]="['profil/edit']">{{'Parametre' |
+                  translate}}</a></li>
+                <li><a href="" (click)="logoutUser()">{{'Deconnexion' | translate}}</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="nav navbar-nav navbar-right flags" >
+          <span (click)="switchLanguage('fr')" class="flag-icon flag-icon-fr"></span>
+          <span (click)="switchLanguage('en')" class="flag-icon flag-icon-gb eng flag-icon"></span>
+          <span (click)="switchLanguage('es')" class="flag-icon flag-icon-es"></span>
+          <span (click)="switchLanguage('de')" class="flag-icon flag-icon-de"></span>
+          <span (click)="switchLanguage('it')" class="flag-icon flag-icon-it"></span>
+          <span (click)="switchLanguage('pl')" class="flag-icon flag-icon-pl"></span>
+        </div>
+        <div class="collapse navbar-collapse cnx">
+          <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!authService.getCurrentUserName()"> <a href="" [routerLink]="['connexion']">{{ 'Connexion' |
+              translate }}</a></li>
+            <li *ngIf="authService.getCurrentUserName()" class="dropdown dropdown-lg">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{authService.getCurrentUserName()}} <b
+                  class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a [routerLink]="authService.getUserRole()=='Professional'? ['compte-pro']:['profil-part'] " href="">
+                    {{'Compte' | translate}}
+                  </a>
+                </li>
+                <li>
+                  <a *ngIf="authService.getUserRole()=='Professional'" href="" [routerLink]="['profil-pro']">
+                    {{'Profil' | translate}}
+                  </a>
+                </li>
+                <!--<li><a href="" *ngIf="authService.getUserRole()=='Professional'" [routerLink]="['a-propos']">A propos</a></li>-->
+                <li><a href="" *ngIf="authService.getUserRole()" [routerLink]="['profil/edit']">{{'Parametre' |
+                  translate}}</a></li>
+                <li><a href="" (click)="logoutUser()">{{'Deconnexion' | translate}}</a></li>
+              </ul>
+            </li>
+            <li> <a (click)="_toggleSidebar()" class="sos-call">{{'Renseignement' | translate}}<span
+                  class="glyphicon glyphicon-arrow-right arrow-sos"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <ng-sidebar [(opened)]="_opened" position="right" mode="push" closeOnClickOutside="true" [animate]="animate">
+    <h3 class="question-call-header">{{'Renseignement' | translate}}</h3>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group question-call">
+        <input id="name" type="text" class="form-control" placeholder="{{'nom' | translate}}" name="name" [(ngModel)]="message.fullName"
+          #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
+        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+          <div *ngIf="name.errors.required && !submitted">{{'required-lastname' | translate}}</div>
+        </div>
+      </div>
+      <div class="form-group question-call">
+        <input id="emailR" type="email" class="form-control" name="emailR" placeholder="{{'email' | translate}}" required
+          ng-pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="message.email" [email]="true"
+          #emailR="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emailR.invalid }" required email />
+        <div *ngIf="f.submitted && emailR.invalid" class="invalid-feedback">
+          <div *ngIf="emailR.errors.required && !submitted">{{'required-email' | translate}}</div>
+          <div *ngIf="emailR.errors.email">{{'invalid-email' | translate}}</div>
+        </div>
+      </div>
+      <div class="form-group question-call">
+        <input id="phone" type="text" class="validate form-control" placeholder="{{'phone' | translate}}" name="phone"
+          [(ngModel)]="message.phone" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+          required maxlength="10" />
+        <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+          <div *ngIf="phone.errors.required && !submitted">{{'required-telephone' | translate}}</div>
+        </div>
+      </div>
+      <div class="form-group question-call">
+        <select id="activity" class="form-control" name="activity" [(ngModel)]="message.activity" #activity="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && activity.invalid }">
+          <option [value]="''" disabled>{{'Objet' | translate}}</option>
+          <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+        </select>
+        <div *ngIf="f.submitted && activity.invalid" class="invalid-feedback">
+          <div *ngIf="activity.errors.required">{{'required-object' | translate}}</div>
+        </div>
+      </div>
+      <div class="form-group question-call">
+        <textarea name="note" rows="5" id="note" type="text" class="validate form-control" #note="ngModel"
+          [(ngModel)]="message.note" placeholder="{{'Taper votre message' | translate}}"
+          [ngClass]="{ 'is-invalid': f.submitted && note.invalid }" required> </textarea>
+        <div *ngIf="f.submitted && note.invalid" class="invalid-feedback">
+          <div *ngIf="note.errors.required && !submitted">{{'required-note' | translate}}</div>
+        </div>
+      </div>
+      <div class="send-sos">
+        <button class="btn btn-primary" type="submit" name="action"
+          [ngClass]="{'button-loader button-loader--loading' : loading}">{{'envoyer' | translate}}</button>
+      </div>
+    </form>
+  </ng-sidebar>
+</ng-sidebar-container>

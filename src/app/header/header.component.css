@@ -1,0 +1,189 @@
+.ng-sidebar--animate {
+  background: #2bbfe5;
+  height: 100vh;
+  position: fixed !important;
+  width: 20em;
+  background-image: url('../../assets/img/background.png');
+}
+
+.question-call-header {
+  text-align: center;
+  margin: 30px 10px 20px 10px;
+  font-weight: 600;
+}
+
+.header-wrapper {
+  background-image: url('../../assets/img/header/header.png');
+  border: none !important
+}
+
+.question-call {
+  background: white;
+  color: white;
+  margin: 45px 10px;
+  border: 1px solid #2bbfe5;
+}
+
+.send-sos {
+  text-align: center;
+}
+
+.sos-call {
+  cursor: pointer;
+}
+
+.arrow-sos {
+  margin-left: 5px;
+}
+
+.sidebar-height {
+  height: 30vh !important;
+  position: initial !important;
+}
+
+.dropdown-toggle {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.dropdown-toggle:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  position: absolute;
+  top: 35px;
+  left: 20px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer !important;
+}
+
+/*Pixel 2*/
+@media only screen and (max-width: 731px) and (min-width: 411px) {
+  .log {
+    margin-left: 130px !important;
+    margin-right: -30px;
+  }
+
+  .dropdown-toggle {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .dropdown-toggle:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/*Galaxy S5*/
+@media only screen and (max-width: 640px) and (min-width: 360px) {
+  .log {
+    margin-left: 260px !important;
+    margin-top: -2px !important;
+  }
+
+  .user-name {
+    margin-top: 50px;
+    margin-left: -20px;
+    list-style-type: none;
+  }
+
+  .dropdown-menu {
+    height: 190;
+    width: 50% !important;
+    margin-left: -10px;
+  }
+
+  .dropdown-toggle {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .dropdown-togglee:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/*iPhone 5/SE*/
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+  .log {
+    margin-left: 180px;
+    margin-top: 1px;
+  }
+
+  .user-name {
+    margin-top: 40px;
+    margin-left: -20px;
+    list-style-type: none;
+  }
+
+  .logo {
+    height: 25px !important;
+    width: 150px !important;
+  }
+
+  .dropdown-toggle {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .dropdown-toggle:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/*iPhone 6/7/8 Plus*/
+@media only screen and (max-width: 736px) and (min-width: 411px) {
+  .log {
+    margin-left: 320px;
+  }
+
+  .dropdown-toggle {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .dropdown-toggle:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.fa-sign-in::before {
+  height: 50px
+}
+
+.flags {
+  margin-left: -10%;
+  margin-top: 3%;
+  margin-right: 3%;
+  z-index: 1;
+}
+
+@media screen and (max-width: 600px){
+
+.flags{
+  margin-left:0%
+}
+}
+@media only screen and (width: 768px) and (height: 1024px) {
+  .flags{
+    margin-top: 5%;
+    margin-left: -15%;
+  }
+}
+.flag-icon{
+  margin-right:3px
+}

@@ -1,0 +1,32 @@
+<div class="col-md-10" align="center">
+  <h3 class="bold">Ajouter vos documents</h3>
+  <form class="form-horizontal" *ngIf='me' name="f" (ngSubmit)="f.form.valid && onSubmit(File)" #f="ngForm" novalidate>
+
+
+    <!--kbis-->
+    <div class="form-group">
+      <label for="kbis" class="col-sm-8 control-label">Votre Kbis :</label>
+      <input type="file" [(ngModel)]="me.kbis" value="{fileUrl}" name="kbis" class="form-control" 
+        #kbis (change)="handleFileInput($event)"
+        accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"><br>
+    </div>
+    <div class="form-group">
+      <label for="assurance" class="col-sm-8 control-label">Votre assurance responsabilité civile professionnelle :</label>
+      <input type="file" [(ngModel)]="me.assurance" name="assurance" class="form-control" 
+        #assurance (change)="handleFileInput($event)"
+        accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"><br>
+    </div>
+    
+    <div class="form-group">
+      <label for="garantie" class="col-sm-8 control-label">Votre garantie décennale :</label>
+      <input type="file" [(ngModel)]="me.garantie" name="garantie" class="form-control" 
+          #garantie (change)="handleFileInput($event)"
+        accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"><br>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="kbis.value=='' || assurance.value=='' || garantie.value=='' || !f.valid">Enregistrer</button>
+
+  </form>
+  <p *ngIf='me' >Vous pouvez également nous les envoyer en écrivant à l'adresse électronique suivante info@parpro.fr, nous les
+    mettrons en ligne</p>
+</div>

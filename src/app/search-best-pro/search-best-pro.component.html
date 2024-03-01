@@ -1,0 +1,24 @@
+<ngx-alerts></ngx-alerts>
+<h3>{{'Cherche-pro' | translate}}</h3>
+<div class="col-md-4">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="activity">{{'activity' | translate}} : </label>
+      <select id="activity" class="form-control" name="activity" [(ngModel)]="filter.activity" #activity="ngModel">
+        <option disabled hidden [value]="null">{{'activity' | translate}}</option>
+        <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="address">{{'ville' | translate}} : </label>
+      <input type="text" class="form-control" name="address" [(ngModel)]="filter.address" #address="ngModel" list="address" />
+      <datalist id="address">
+        <option [value]="city.city" *ngFor="let city of cities">{{city.city}}</option>
+      </datalist>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit" name="action">{{'cherche' | translate}}</button>
+  </form>
+</div>
+<div class="user-img hidden-sm hidden-xs"></div>

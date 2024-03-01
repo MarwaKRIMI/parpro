@@ -1,0 +1,174 @@
+<ngx-alerts></ngx-alerts>
+<form [ngFormOptions]="{updateOn: 'submit'}" class="form-horizontal" name="form" (ngSubmit)="onSubmit()" #f="ngForm"
+  novalidate>
+  <div class="row">
+    <h3 class="legal-informations presentation">{{'presentation' | translate}}</h3>
+    <div class="col-md-6 form-group">
+      <label for="experiences" class="col-sm-5 col-offset-2 control-label about">{{'about-metier' | translate}}
+        :</label>
+      <div class="col-sm-7">
+        <textarea rows="5" class="form-control" id="experiences" placeholder="Expérience" name="experiences"
+          [(ngModel)]="professional.experiences" #experiences="ngModel"></textarea>
+      </div>
+
+      <!--Ajout des photos-->
+      <label class="images-realizations">{{'realisation' | translate}} : <span
+          class="help-block">({{'facultatif' | translate}})</span></label>
+      <span class="help-block">{{'photo-nombre' | translate}}</span>
+
+
+      <div class="upload-list">
+        <div class="avatar-upload" *ngFor="let indImage of images">
+          <div class="avatar-edit">
+            <input type="file" id="imageUpload{{indImage}}" accept=".png, .jpg, .JPEG, .jpeg"
+              (change)="readURL($event, indImage);">
+            <label for="imageUpload{{indImage}}"></label>
+          </div>
+          <div class="avatar-preview img-wrap"
+            [style.content]="!(imageSrc && imageSrc[indImage]) ? 'url(/assets/img/avater_upload_part.png)' : ''">
+            <span *ngIf="imageSrc && imageSrc[indImage]" (click)="deleteImage(imageSrc[indImage])"
+              class="close">&times;</span>
+            <div id="imagePreview" *ngIf="imageSrc && imageSrc[indImage]"
+              [style.background-image]="makeTrustedImage(imageSrc[indImage])">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="btn-add-photo" *ngIf="images.length <12" (click)="addPhoto()">+ {{'Ajout-photo' | translate}}</span>
+    </div>
+
+    <div class="col-md-6 form-group">
+      <label for="services" class="col-sm-2 control-label serv">{{'service' | translate}}</label><br>
+      <div *ngFor="let service of services; let in=index" class="col-sm-10 col-sm-offset-2 services-style">
+        <div class="form-group">
+          <input type="text" [(ngModel)]="services[in].value" name="services{{in}}" class="form-control"
+            #name="ngModel" />
+          <button type="button" (click)="delete(in)" class="btn btn-danger delete-button"
+            style="color:white;border-radius:30%; padding: 5px 10px;margin-top:-33px;">X</button>
+          <!--<p [hidden]="words2[in].value">Field is required</p>
+            {{formRef.form.name1}}-->
+        </div>
+        <br />
+      </div>
+      <a class="pull-right add-service" (click)="add()">{{'add-services' | translate}} +</a>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="legal-informations">{{'info-legal' | translate}}</h3>
+    <div class="col-md-6 form-group left-block">
+      <label for="denomination" class="lable-legal">{{'Denomination' | translate}} :</label>
+      <input type="text" [(ngModel)]="professional.denomination" name="denomination" class="form-control"
+        #name="ngModel" />
+
+      <label for="legalForm" class="lable-legal">{{'form-juridique' | translate}} :</label>
+      <input type="text" [(ngModel)]="professional.legalForm" name="legalForm" class="form-control" #name="ngModel" />
+
+      <label for="leader" class="lable-legal">{{'Dirigeant' | translate}} :</label>
+      <input type="text" [(ngModel)]="professional.leader" name="leader" class="form-control" #name="ngModel" />
+      <label for="siret" class="lable-legal">N° SIRET :</label>
+      <input type="text" *ngIf="isSiretExist" [(ngModel)]="professional.siret" name="siret" class="form-control"
+        #name="ngModel" disabled />
+      <input type="text" *ngIf="!isSiretExist" [(ngModel)]="professional.siret" name="siret" class="form-control"
+        #name="ngModel" />
+      <!--Ajout des photos-->
+    </div>
+
+    <div class="col-md-6 form-group right-block">
+      <label for="since" class="lable-legal">{{'creation' | translate}} :</label>
+      <input type="date" [(ngModel)]="professional.since" name="since" class="form-control" #since="ngModel" />
+
+      <label for="effective" class="lable-legal">{{'effectif' | translate}} :</label>
+      <input type="number" [(ngModel)]="professional.effective" name="effective" class="form-control" #name="ngModel" />
+
+      <label for="insurance" class="lable-legal">{{'Assurance responsabilité civile' | translate}} :</label>
+
+      <div class="form-check">
+        <input class="radio-inline" type="radio" name="insurance" [(ngModel)]="professional.insurance" [value]="true">
+        <label>
+          {{'yes' | translate}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="radio-inline" type="radio" name="insurance" [(ngModel)]="professional.insurance" [value]="false">
+        <label>
+          {{'no' | translate }}
+        </label>
+      </div>
+      <label for="startedSince" class="lable-legal">{{'partenaire' | translate}} :</label>
+      <input type="date" [(ngModel)]="professional.startedSince" name="startedSince" class="form-control"
+        #startedSince="ngModel" disabled />
+    </div>
+  </div>
+  <!--A propos-->
+  <!--A propos-->
+  <div class="row">
+    <h3 class="legal-informations">{{'doc-officiel' | translate}}</h3>
+    <!--kbis-->
+
+    <div class="form-group">
+      <label for="kbisDoc" class="lable-legal">{{'Kbis' | translate}} </label>
+      <div class="btn-doc">
+        <button *ngIf="existKbis" class="btn btn-primary voir" (click)="viewFile($event, 'kbis')">Voir</button>
+        <button class="btn btn-primary modify" *ngIf="isCollapsedKbis && existKbis"
+          (click)="toggleCollapse('kbis')">{{'importer' | translate}}
+          / {{'modify' | translate}}</button>
+      </div>
+      <input *ngIf="!isCollapsedKbis || !existKbis" ngModel [ngModelOptions]="{updateOn:'submit'}" type="file"
+        name="kbisDoc" class="form-control" #kbisDoc (change)="handleFileInput($event, kbisDoc.name)"
+        accept=".xlsx, .xls,image/*, .doc, .docx, .ppt, .pptx, .txt, .pdf">
+      <br>
+    </div>
+
+    <div class="form-group col-xs-offset-2">
+      <label for="insuranceDoc" class="lable-legal">{{'arcp' | translate}} </label>
+      <div class="btn-doc ">
+        <button *ngIf="existInsurance" class="btn btn-primary voir" (click)="viewFile($event, 'insurance')">
+          Voir</button>
+        <button class="btn btn-primary modify" *ngIf="isCollapsedInsurance && existInsurance"
+          (click)="toggleCollapse('insurance')" false>{{'importer' | translate}}
+          / {{'modify' | translate}}</button>
+      </div>
+      <input *ngIf="!isCollapsedInsurance || !existInsurance" type="file" name="insuranceDoc" class="form-control"
+        #insuranceDoc (change)="handleFileInput($event, insuranceDoc.name)"
+        accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx, .txt, .pdf"><br>
+    </div>
+    <div class="form-group">
+      <label for="guaranteeDoc" class="lable-legal">{{'garantie-decennale' | translate}} </label>
+      <div class="btn-doc">
+        <button *ngIf="existGuarantee" class="btn btn-primary voir"
+          (click)=" viewFile($event, 'guarantee')">Voir</button>
+        <button class="btn btn-primary modify " *ngIf="isCollapsedGuarantee && existGuarantee"
+          (click)="toggleCollapse('guarantee')">{{'importer' | translate}}
+          / {{'modify' | translate}}</button>
+      </div>
+      <input *ngIf="!isCollapsedGuarantee || !existGuarantee" type="file" name="guaranteeDoc" class="form-control"
+        #guaranteeDoc (change)="handleFileInput($event, guaranteeDoc.name)"
+        accept=".xlsx, .xls, image/*, .doc, .docx, .ppt, .pptx, .txt, .pdf"><br>
+      <input type="hidden" #focuser>
+    </div>
+    <!-- documents -->
+    <!-- <div *ngFor="let document of documents; let in=index">
+    <div class="form-group">
+      <input type="file" [(ngModel)]="documents[in].value" name="documents{{in}}" class="form-control" #name="ngModel"
+        (change)="handleFileInput($event)" accept=".xlsx, .xls, image/*, .doc, .docx, .ppt, .pptx, .txt, .pdf"><br>
+    </div>
+  </div>
+  <a class="pull-left add-document" (click)="addDocument()">+ Ajouter d'autres documents </a> -->
+  </div>
+  <div class="row">
+    <div class='col-md-3 hidden-xs'></div>
+    <div class="form-group footer-btn">
+      <div class="col-md-3 col-xs-10 col-sm-10 save">
+        <button type="submit" [disabled]="loading" [ngClass]="{'button-loader button-loader--loading' : loading}"
+          class="btn btn-primary btn-block">{{'save' | translate}}</button>
+      </div>
+      <div class="col-md-3 col-xs-10 col-sm-10 view">
+        <a class="btn btn-primary btn-block" href="#" [routerLink]="['/professionnel-profil', slug]">
+          {{'Visualiser-profil' | translate}}</a>
+      </div>
+    </div>
+
+  </div>
+</form>
+<p class="doc-send-email">{{'email-send-doc' | translate}}</p>

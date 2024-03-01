@@ -1,0 +1,32 @@
+.social-sidebar-buttons {
+  display: flex;
+  justify-content: flex-end;
+  cursor: hand;
+  z-index: 10;
+}
+
+#facebook {
+  margin-right: 10px;
+  margin-left: 50px;
+  width: 30px;
+  height: 30px;
+
+}
+
+#instagram {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+#twitter {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#google {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}

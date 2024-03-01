@@ -1,0 +1,19 @@
+<!------------------ ENVOI DES INFORMATIONS A PAYBOX (Formulaire) ------------------>
+<form #form action={{paymentData.serveurOK}} method='post'>
+  <input type="hidden" name="PBX_SITE" value="{{paymentData.PBX_SITE}}">
+  <input type="hidden" name="PBX_RANG" value="{{paymentData.PBX_RANG}}">
+  <input type="hidden" name="PBX_IDENTIFIANT" value="{{paymentData.PBX_IDENTIFIANT}}">
+  <input type="hidden" name="PBX_TOTAL" value="{{paymentData.PBX_TOTAL}}">
+  <input type="hidden" name="PBX_DEVISE" value="{{paymentData.PBX_DEVISE}}">
+  <input type="hidden" name="PBX_CMD" value="{{paymentData.PBX_CMD}}">
+  <input type="hidden" name="PBX_PORTEUR" value="{{paymentData.PBX_PORTEUR}}">
+  <input type="hidden" name="PBX_REPONDRE_A" value="{{paymentData.PBX_REPONDRE_A}}">
+  <input type="hidden" name="PBX_RETOUR" value="{{paymentData.PBX_RETOUR}}">
+  <input type="hidden" name="PBX_EFFECTUE" value="{{paymentData.PBX_EFFECTUE}}">
+  <input type="hidden" name="PBX_ANNULE" value="{{paymentData.PBX_ANNULE}}">
+  <input type="hidden" name="PBX_REFUSE" value="{{paymentData.PBX_REFUSE}}">
+  <input type="hidden" name="PBX_HASH" value="{{paymentData.PBX_HASH}}">
+  <input type="hidden" name="PBX_TIME" value="{{paymentData.PBX_TIME}}">
+  <input type="hidden" name="PBX_HMAC" value="{{paymentData.PBX_HMAC}}">
+  <input type="submit" style="position:relative;" value="Envoyer" (click)="form.submit()">
+</form>

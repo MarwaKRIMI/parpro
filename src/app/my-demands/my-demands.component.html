@@ -1,0 +1,39 @@
+<ngx-alerts></ngx-alerts>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" color="#000000" type="ball-scale-multiple">
+  <p class="text-loader">Un moment svp ...</p>
+</ngx-spinner>
+<div class="row btn-header">
+  <a class="col-md-3 projet-btn" href="" [routerLink]="['/demandes']"><button class="btn btn-primary ">{{'projet-disponibles' | translate}}</button></a>
+</div>
+<div class="row card">
+  <div *ngFor="let demand of myDemands">
+    <div class="col-md-3 col-sm-4 cardd">
+      <div class="thumbnail">
+        <div class="caption text-center">
+          <div class="position-relative date">
+            <time datetime="2014-09-20" class="icon">
+              <strong>{{demand?.createdAt | date:'MMM'}} </strong>
+              <span> {{demand?.createdAt | date:'dd'}}</span>
+            </time>
+            <p class="identifiant">{{demand?.owner?.firstName}} {{demand?.owner?.lastName}}</p>
+            <p class="city"> {{demand?.owner?.address?.city}} </p>
+
+            <div class="thumbnail-description smaller">{{demand?.title}}<br>
+              <!--  <p id="description-demand"><strong>Description
+                  : </strong>{{demand?.description}}</p></div> -->
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-md-offset-3 col-xs-6 col-xs-offset-3">
+                <a id="link-detail-demand-accepted" href="" [routerLink]="['/demandes', demand.id]"> <button
+                    class="btn btn-primary detail-demand">
+                    {{'details' | translate}}
+
+                  </button> </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>

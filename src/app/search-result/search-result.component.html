@@ -1,0 +1,124 @@
+<ngx-alerts></ngx-alerts>
+<div class="row rowSearch">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="ss">
+      <div class="form-group icon col-md-1"><i class="iconSearch fa fa-search"></i></div>
+      <div class="form-group col-md-6">
+        <select id="activity" class="form-control activit" name="activity" [(ngModel)]="activity">
+          <option value="" disabled>{{'Sélectionner votre activité' | translate}}</option>
+          <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group col-md-3 mm">
+
+      <label for="address"></label>
+      <i class="iconVille fa fa-map-marker"></i>
+      <input google-place type="text" class="form-control ville" id="villa" placeholder="{{'ou'| translate}} ?" name="address"
+        [(ngModel)]="address" list="address" />
+      <datalist id="address">
+        <option (onSelect)="setAddress($event)">{{code_postal}}</option>
+      </datalist>
+    </div>
+    <div class="col-md-2">
+      <button class="recherche" type="submit" name="action">{{'recherche' | translate}}</button>
+    </div>
+  </form>
+</div>
+<div class="col-md-8">
+  <div class="row">
+    <div class="col-md-12 result">
+      <p class="result-title" *ngIf="searchResult.length > 1">{{searchResult.length}} {{'Profils trouvés pour votre recherche'| translate}} :</p>
+      <p class="result-title" *ngIf="searchResult.length == 1">{{searchResult.length}} {{'Profil trouvé pour votre recherche' | translate}} :</p>
+
+      <div class="request-list">
+        <div class="media">
+          <div class="request"  (mouseenter)="clickedMarker1(prof,id = prof.user.id)" id="{{prof.user.id}}" [style.border]="prof.isClicked ? '1px solid #0596de' : 'none'"
+            (mouseenter)="prof.hovered = true" (mouseleave)="prof.hovered = false" *ngFor="let prof of searchResult ">
+            <div class="media">
+              <div class="media-left">
+                <a href="" [routerLink]="['/professionnel-profil', prof.slug]">
+                  <img class="media-object"
+                    [src]="prof.user.avatar ? prof.user.avatar.webPath : '../../assets/img/person-empty.png'" alt="">
+                </a>
+              </div>
+              <div class="media-body">
+                <div class="name-pro">
+                  <p id="name-pro">{{prof.user.firstName + ' ' + prof.user.lastName}}</p> <span id="pro">PRO</span>
+                </div>
+                <p id="ville-pro">{{prof.user.address.city}}</p>
+                <p id="activity-pro">{{prof.activity ? prof.activity.name : '-'}}</p>
+                <p class="description">{{prof.experiences}}</p>
+                <div id="service" *ngFor="let serv of prof.services">
+                  <p *ngIf="prof.services.length>0 && serv!=null">{{serv}}|</p>
+                  <p *ngIf="serv==' '">{{serv}}</p>
+                </div> <br>
+                <a href="" [routerLink]="['/professionnel-profil', prof.slug]" href="#" class="btn  btn-lg view">
+                  <span class="glyphicon glyphicon-plus-sign"></span> {{'voir-profil' | translate}}
+                </a>
+              </div>
+              <div *ngIf="prof.realizations.length==1" class="media-right">
+                <ul id="horizontal-list">
+                  <li><a *ngIf="!isConnected" href="" [routerLink]="['/professionnel-profil', prof.slug]"><img
+                        id="one-real-blur" src="{{prof?.realizations[0]?.webPath}} " /></a>
+                    <a *ngIf="isConnected" href="" [routerLink]="['/professionnel-profil', prof.slug]"><img
+                        id="one-real-nette" src="{{prof?.realizations[0]?.webPath}} " /></a>
+                </ul>
+              </div>
+              <div *ngIf="prof.realizations.length>=2" class="media-right">
+                <ul id="horizontal-list">
+                  <li>
+                    <a *ngIf="!isConnected" href="" [routerLink]="['/professionnel-profil', prof.slug]"><img
+                        id="first-real-blur" src="{{prof?.realizations[0]?.webPath}} " />
+                    </a>
+                    <a *ngIf="isConnected" href="" [routerLink]="['/professionnel-profil', prof.slug]"><img
+                        id="first-real-nette" src="{{prof?.realizations[0]?.webPath}} " />
+                    </a>
+
+                  </li>
+                  <li>
+                    <a *ngIf="!isConnected" href="" [routerLink]="['/professionnel-profil', prof.slug]"><img
+                        id="second-real-blur" src="{{prof?.realizations[1]?.webPath}} " />
+                    </a>
+                    <a *ngIf="isConnected" href="" [routerLink]="['/professionnel-profil', prof.slug]"><img
+                        id="second-real-nette" src="{{prof?.realizations[1]?.webPath}} " />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="result-title" *ngIf="searchResult.length == 0">{{'aucun profil trouvé' | translate}}</p>
+
+    </div>
+  </div>
+</div><br>
+<div class="col-md-4 maps" *ngIf="searchResult.length !=0">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="5.2" [disableDefaultUI]="false" [zoomControl]="false">
+    <agm-marker (markerClick)="clickedMarker(prof,id = prof.user.id)" *ngFor="let prof of searchResult;let i = index"
+      [iconUrl]="
+ {
+   url: prof.isClicked ||prof.hovered ? '../../assets/img/user_marker.png' : '../../assets/img/marker_user.png',
+   scaledSize: {
+       width: 40,
+       height: 50
+   }
+}" [latitude]="prof.user.address.latitude" [longitude]="prof.user.address.longitude" [markerClickable]="true">
+
+      <agm-info-window *ngIf="ok" [isOpen]="prof.isClicked" >
+
+      <h6>{{distance}}Km</h6>
+ 
+    </agm-info-window> 
+
+    </agm-marker>
+
+    <agm-circle [latitude]=" + 0.3" [longitude]="" [radius]="1000" [fillColor]="'red'" [circleDraggable]="true"
+      [editable]="true">
+    </agm-circle>
+
+  </agm-map>
+</div>

@@ -1,0 +1,158 @@
+.connexion {
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+input[type="checkbox"] {
+  opacity: 1;
+  left: 0;
+}
+
+.login-first-line-right-part {
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.login-last-lines-right-part {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.request-password-style {
+  color: gray;
+  position: relative;
+  bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkbox-inline {
+  font-weight: 500 !important;
+}
+
+@media screen and (max-width: 900px) {
+  .connexion {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 35% !important;
+  }
+
+  .request-psw {
+    text-align: center;
+  }
+
+  .request-password-style {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-cnx {
+    text-align: center;
+    margin: auto;
+  }
+
+  .box-inscription {
+    text-align: center;
+    border-left: none;
+  }
+}
+
+/*iPad*/
+@media only screen and (width: 768px) and (height: 1024px) {
+  .form-group {
+    width: 60%;
+    margin: auto;
+  }
+
+  .connexion {
+    margin-top: -5% !important;
+  }
+
+  .request-password-style {
+    display: inline;
+    margin-left: 100px;
+  }
+
+  .request-psw {
+    margin-bottom: 20px;
+  }
+
+  input[type="email"] {
+    margin-bottom: 30px
+  }
+
+  input[type="password"] {
+    margin-bottom: 30px
+  }
+
+  .checkbox {
+    margin-bottom: 15px;
+  }
+
+  .login-first-line-right-part {
+    font-size: 20px;
+  }
+
+  .login-last-lines-right-part {
+    font-size: 17px;
+  }
+}
+
+.checkbox {
+  border-bottom: none;
+}
+
+.checkbox-inline {
+  font-weight: 600;
+  color: #001847;
+  font-size: 15px
+}
+
+/*iPad PRO*/
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .form-group {
+    margin: auto;
+  }
+
+  .connexion {
+    margin-top: -10%;
+    font-weight: 700;
+  }
+
+  .request-psw {
+    margin-bottom: 20px;
+  }
+}
+
+/*iPhone 5/SE*/
+@media only screen and (width: 320px) and (height: 568px) {
+  .form-group {
+    margin: auto;
+  }
+
+  .request-psw {
+    margin-bottom: 20px;
+  }
+
+  .box-inscription {
+    border-left: none;
+  }
+
+  .login-first-line-right-part {
+    font-size: 13px;
+  }
+
+  .login-last-lines-right-part {
+    font-size: 13px;
+  }
+
+  .checkbox-inline {
+    font-size: 12px !important;
+  }
+
+  .connexion {
+    margin-top: 25% !important
+  }
+}

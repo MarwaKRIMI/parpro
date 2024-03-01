@@ -1,0 +1,116 @@
+.user-img {
+  position: fixed;
+  height: 100%;
+  background-size: contain;
+  width: 160px;
+  right: 15%;
+  background-repeat: no-repeat;
+  background-image: url('/assets/img/par-man.png');
+}
+
+p {
+
+  font-size: 15px;
+  text-align: justify !important;
+
+  line-height: 1.4;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  color: #404040;
+  font-weight: 500
+}
+
+.title-about-part {
+  font-weight: bold;
+  margin-bottom: 50px;
+  font-size: 2.2em
+}
+
+.about-part {
+  font-weight: bold;
+  margin-top:10% !important
+}
+
+.more-info-description {
+  margin-top: -20px;
+
+}
+
+.free-parpro {
+  color: #001847;
+}
+
+.btn-block {
+  width: 50%;
+  margin-left: 25%;
+}
+
+@media (max-width: 700px) {
+  .btn-block {
+    width: 100%;
+    margin-left: 0%;
+
+  }
+
+  .title-about-part {
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 2em !important;
+  }
+
+  .about-part {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  .more-info-description{
+    margin-top:30% !important
+  }
+}
+
+/*iPhone 5/SE*/
+@media only screen and (width: 320px) and (height: 568px) {
+  .title-about-part {
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 1.8em;
+    margin-top: 30%;
+  }
+}
+
+/*iPad PRO*/
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .btn-block {
+    width: 60%;
+    margin-left: 20%;
+
+  }
+
+  .more-info-description {
+    margin-top: -15%;
+  }
+
+  .user-img {
+    position: fixed;
+    height: 100%;
+    background-size: contain;
+    width: 160px;
+    right: 15%;
+    margin-top: -10px;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/par-man.png');
+  }
+}
+
+/*iPad*/
+@media only screen and (width: 768px) and (height: 1024px) {
+  .btn-block {
+    width: 60%;
+    margin-left: 20%;
+
+  }
+
+  .more-info-description {
+    margin-top: -15%;
+  }
+
+}

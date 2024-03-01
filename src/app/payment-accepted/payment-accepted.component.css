@@ -1,0 +1,22 @@
+p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  text-align: justify;
+  line-height: 2.5;
+  margin-left: -10px;
+}
+
+.payment-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #001847;
+  margin-top: -30px;
+  line-height: 2;
+}
+
+.icon {
+  font-size: 100px;
+  color: green;
+}

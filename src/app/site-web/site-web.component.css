@@ -1,0 +1,203 @@
+@import '../../app/politique/politique.component.css';
+
+#note-site {
+  width: 409px;
+  padding: 10px;
+}
+
+.description-website {
+  width: 412px;
+  margin-top: 2% !important
+}
+
+#activity1 {
+  margin-top: 0px
+}
+
+.activit {
+  margin-top: 0px
+}
+
+.condition-website {
+  width: 410px;
+  text-align: justify;
+  font-size: 0.8em;
+  margin-top: 3%;
+  color: gray;
+  margin-left: 2%
+  
+}
+ .condition-website-2{
+  width: 410px;
+  text-align: justify;
+  font-size: 0.8em;
+  margin-top: -1%;
+  color: gray;
+  margin-left: 2%
+
+ }
+
+.site-creation {
+  border-radius: 5px !important;
+  margin-left: 11%
+}
+
+#phone {
+  z-index: 1;
+  position: relative
+}
+
+#first-line-form-site {
+  text-align: center;
+  margin-left: 8%;
+  line-height: 1.5;
+  font-size: 1.2em !important;
+  font-weight: bold
+}
+
+#second-line-form-site {
+  text-align: center;
+  margin-left: 7%;
+  line-height: 1.5;
+  font-size: 1.2em !important;
+  font-weight: bold;
+  margin-bottom: -2%
+}
+
+.identifiant-container {
+  display: flex !important;
+  margin-bottom: -7%
+}
+
+#nom-site-owner {
+  z-index: 1;
+  position: relative
+}
+
+#prenom-site-owner {
+  z-index: 1;
+  position: relative
+}
+
+#email-phone-container {
+  display: flex !important;
+  margin-bottom: -7%
+}
+
+#emailSite {
+  z-index: 1;
+  position: relative
+}
+
+.address-container {
+  display: flex !important;
+  margin-top: -3% !important
+}
+
+.activity-site {
+  display: flex !important;
+  width: 412px;
+  margin-top: -1%
+}
+
+.email-site {
+  width: 412px
+}
+
+.email-phone-container {
+  display: flex !important;
+  width: 435px;
+  margin-top: -1%;
+  margin-bottom: -7%
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+#politique-confidentialite-site {
+  color: #001847;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .description-website {
+    width: 94%;
+
+  }
+
+  .activity-site {
+    width: 90%
+  }
+
+  .email-phone-container {
+    width: 100%
+  }
+
+  .activity-site {
+    width: 94%
+  }
+
+  .condition-website {
+    margin-left: 3%;
+    width: 93%
+  }
+
+  textarea {
+    width: 100% !important
+  }
+
+  .site-creation {
+    margin-left: 2% !important
+  }
+
+  .send-demand {
+    text-align: center
+  }
+
+  #first-line-form-site {
+    margin-top: 20%
+  }
+}
+
+
+
+
+
+
+@media only screen and (height: 1024px) and (width: 768px) {
+
+  #first-line-form-site {
+    margin-left: 0%
+  }
+
+  .site-creation {
+    margin-left: -22%
+  }
+
+  #form-site {
+    margin-left: 20%
+  }
+
+  .send-demand {
+    text-align: center
+  }
+}
+
+@media only screen and (height: 1366px) and (width: 1024px) {
+
+  #first-line-form-site {
+    margin-left: 0%
+  }
+
+  #second-line-form-site {
+    margin-left: 0%
+  }
+
+  #form-site {
+    margin-left: -13%
+  }
+}

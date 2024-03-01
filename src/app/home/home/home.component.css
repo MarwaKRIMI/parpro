@@ -1,0 +1,272 @@
+.welcome-lign {
+  text-align: center;
+  margin-bottom: 10%
+}
+
+li {
+  opacity: 1
+}
+
+.select-activity {
+  color: gray;
+}
+
+.mm {
+  display: flex;
+}
+
+.carousel-inner>.item {
+  transition: transform 0s ease-in-out, -webkit-transform 0s ease-in-out;
+}
+
+.savoir {
+  background-color: transparent;
+  color: #001847;
+  flex-wrap: wrap;
+  border-color: #001847;
+  margin-right: 20px
+}
+
+.part-btn {
+  background-color: #001847;
+  border: none;
+
+}
+
+.slide-home {
+  font-weight: 0%;
+  text-align: center;
+  margin-top: 10%
+}
+
+.about {
+  margin-bottom: 5% !important;
+  margin-top: 5% !important;
+  text-align: left !important;
+}
+
+.description-text {
+  color: gray;
+  font-weight: normal !important;
+  line-height: 1.5em;
+  text-align: left;
+}
+
+.savoir:hover {
+  background-color: gray;
+  border: none;
+}
+
+.savoir:focus {
+  background-color: gray !important;
+  border: none;
+}
+
+.part-btn:hover {
+  background-color: gray;
+}
+
+.part-btn:focus {
+  background-color: gray !important;
+}
+
+.slide-home>div:last-child h1,
+.slide-home>div:last-child p {
+  text-align: left;
+}
+
+.pro-btn {
+  background-color: #001847;
+  border: none;
+}
+
+.pro-btn:hover {
+  background-color: gray;
+}
+
+.pro-btn:focus {
+  background-color: gray !important;
+}
+
+.buttons-part,
+.buttons-pro {
+  display: inline-block;
+  margin-top: 10%
+}
+
+.icon {
+  width: 40px;
+}
+
+.ville {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.iconVille,
+.iconSearch {
+  font-size: 27px;
+  margin-top: 10px;
+  color: rgba(170, 168, 168, 0.815);
+}
+
+#activity {
+  margin-top: 10px;
+  z-index: 1;
+}
+
+
+
+input::-webkit-input-placeholder {
+  color: #3a4d72 !important;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.recherche {
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  color: #fff;
+  font-weight: bold;
+  height: 50px;
+  width: 150px;
+  margin-left: 52px;
+  background-color: #ff7e00;
+  border-radius: 0px 15px 15px 0px;
+  box-shadow: none !important;
+  border: none !important
+}
+
+
+.recherche:focus {
+  color: #fff;
+  font-weight: bold;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  height: 50px;
+  width: 150px;
+  margin-left: 52px;
+  background-color: #ff7e00;
+  border-radius: 0px 15px 15px 0px !important;
+  box-shadow: none !important;
+  text-decoration: none !important
+}
+
+.rowSearchHome {
+  height: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 15px;
+  margin-top:5%
+}
+
+
+@media (max-width: 600px) {
+
+  .rowSearch {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%
+  }
+
+  .activit {
+    padding-top: 0px;
+    margin-top: -52px !important;
+    margin-left: 15px
+  }
+
+  .part {
+    margin-top: 40% !important;
+  }
+
+  .recherche {
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-left: 20%
+  }
+
+  .about {
+    font-size: 1.5em
+  }
+
+  .ss,
+  .mm {
+    background-color: white;
+    border-radius: 15px
+  }
+
+  .pro-btn,
+  .part-btn,
+  .savoir {
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .rowSearch {
+    margin-top: -20%
+  }
+}
+
+@media only screen and (width: 768px) and (height: 1024px) {
+  .rowSearch {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10%;
+    margin-bottom: -20%
+  }
+
+  .activit {
+    padding-top: 0px;
+    margin-top: -52px !important;
+    margin-left: 15px
+  }
+
+  .part {
+    margin-top: 40% !important;
+  }
+
+  .recherche {
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-left: 20%
+  }
+
+  .about {
+    font-size: 1.5em
+  }
+
+  .ss,
+  .mm {
+    background-color: white;
+    border-radius: 15px
+  }
+
+  .pro-btn,
+  .part-btn,
+  .savoir {
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (width: 320px) and (height: 568px) {
+  .form-control {
+    font-size: 13px;
+  }
+}
+
+.activit,
+.ville {
+  border: none !important;
+  box-shadow: none !important
+}
+
+.pro {
+  margin: 0 !important
+}
+

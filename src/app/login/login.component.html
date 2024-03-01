@@ -1,0 +1,47 @@
+<ngx-alerts></ngx-alerts>
+<h2 class="connexion">
+  {{'connect' | translate}}
+</h2>
+
+<div class="col-md-6">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input formControlName="email" id="email" type="email" class="validate form-control" placeholder="{{'email' | translate}}"
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">{{'required-email' | translate}}</div>
+        <div *ngIf="f.email.errors.pattern">{{'required-email-pattern' | translate}}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input formControlName="password" id="password" type="password" class="validate form-control"
+        placeholder="{{'psw' | translate}}" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">{{'required-psw' | translate}}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-control checkbox">
+        <label class="checkbox-inline">
+          <input formControlName="checkbox" type="checkbox" name="isActive" [(ngModel)]="isChecked">{{'souvenir' | translate}}
+        </label>
+      </div>
+    </div>
+    <div class="request-psw">
+      <a [routerLink]="['/mot-de-passe-oublie']" class="request-password-style" href="">{{'psw-oublie' | translate}}</a>
+    </div>
+
+    <!-- <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div> -->
+    <div class="btn-cnx">
+      <button class="btn btn-primary" type="submit"
+        [ngClass]="{'button-loader button-loader--loading' : loading}">{{'Connexion'  | translate}}</button>
+    </div>
+  </form>
+
+</div>
+<div class="col-md-5 col-md-offset-1 box-inscription">
+  <div class="login-first-line-right-part">{{'pas-de-compte' | translate}} ? </div>
+  <a [routerLink]="['/register/professionnel']" class="login-last-lines-right-part" href="">{{'inscri-pro' | translate}}</a>
+  <a [routerLink]="['/demande/particulier']" class="login-last-lines-right-part" href="">{{'inscri-part' | translate}}</a>
+</div>

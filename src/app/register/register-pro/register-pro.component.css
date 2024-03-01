@@ -1,0 +1,239 @@
+@import '../../cond-gen/cond-gen.component.css';
+@import '../../politique/politique.component.css';
+
+.stats-box {
+  margin-top: 120px
+}
+
+.stat {
+  text-align: center;
+
+}
+
+.stats-box h4 {
+  padding: 15px 5px;
+  font-weight: 600
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+.button-inscrit {
+  
+  margin-left: auto!important;
+  margin-right: auto!important;
+  width: 70%;
+  padding: 10px;
+}
+
+/* .stats-box .col-md-4:not(:last-child) {
+    border-right: 1px solid #ccc;
+} */
+.media-body p {
+  margin: 0;
+}
+
+.request-list {
+  height: 530px;
+  width: 110%;
+  overflow: hidden;
+  position: relative;
+}
+
+.request .media-left a {
+  border: none;
+  margin-right: 1%
+}
+
+.col-md-8 {
+  border-right: 1px solid #ccc;
+}
+
+.pro-new-account-header {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 978px) {
+  .col-md-6 {
+    margin-top: 180px
+  }
+
+  .request {
+    margin-right: 25%;
+    padding-right: 5px;
+  }
+
+  .activity {
+    margin-top: -20px;
+  }
+
+  .pro-new-account-header {
+    font-size: 1.4em !important;
+    text-align: start;
+    font-weight: bold;
+    margin-top: 35%;
+    margin-bottom: 15%
+  }
+
+  .media {
+    padding-right: 20px;
+  }
+
+  .lang {
+    margin-top: -10px;
+  }
+
+  .text-center {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .stat {
+    text-align: center;
+    font-weight: normal
+  }
+
+  .request-list {
+    height: 530px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+.request {
+  margin: 5px 0px;
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+.accept-cond-pro {
+  font-size: 12px;
+  margin-left: 0;
+  margin-top: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+  color: gray;
+  line-height: 1.5;
+}
+
+li {
+  opacity: 1;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.postal-code-required {
+  font-size: 14px;
+}
+
+#condition-utilisation {
+  color: #001847;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#politique-confidentialite {
+  color: #001847;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#email-website {
+  color: #001847;
+  font-weight: bold;
+}
+
+.btn-accept-condition {
+  text-align: center;
+}
+
+.vertical-comments {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: -17px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.conditions-generale-utilisations {
+  text-align: justify;
+}
+
+.larger-size {
+  font-size: 14px;
+}
+
+.parpro {
+  text-decoration: none;
+}
+
+#compte-pro-cgu {
+  text-decoration: none;
+}
+
+.politique {
+  font-size: 14px;
+}
+
+.larger-size {
+  font-size: 14px;
+}
+
+/*iPhone 5/SE*/
+@media only screen and (width: 320px) and (height: 568px) {
+  .pro-new-account-header {
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30% !important;
+  }
+
+  .button-inscrit {
+    font-size: 14px;
+  }
+}
+
+/*iPad PRO*/
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .pro-new-account-header {
+    font-size: 30px !important;
+    text-align: center;
+    font-weight: 600;
+    margin-top: -18% !important;
+    margin-bottom: 10%;
+  }
+
+  .demand {
+    padding-right: auto;
+    margin-right: auto;
+    width: 95%
+  }
+
+
+}
+
+/*iPad*/
+@media only screen and (width: 768px) and (height: 1024px) {
+  .pro-new-account-header {
+    font-size: 25px !important;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -10% !important;
+    margin-bottom: 10%;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

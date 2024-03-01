@@ -1,0 +1,264 @@
+<ngx-alerts></ngx-alerts>
+
+<h2 class="pro-new-account-header">{{'pro-account' | translate}}</h2>
+<div class="row">
+  <div class="col-md-8">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="col-md-6 activity">
+        <div class="form-group">
+          <!--Activité-->
+          <ng-select id="activit" [items]="activities" [multiple]="false" [closeOnSelect]="true" [searchable]="true"
+            bindLabel="name" bindValue="id" placeholder="{{'select-activity' | translate}}" [(ngModel)]="pro.activity"
+            name="activity" #activity="ngModel" [ngClass]="{ 'is-invalid': f.submitted && activity.invalid }" required
+            [disabled]="rightUrl">
+            <option disabled hidden [value]="null">{{'activity' | translate}}</option>
+            <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+          </ng-select>
+
+          <div *ngIf="f.submitted && activity.invalid" class="invalid-feedback">
+            <div *ngIf="activity.errors.required">{{'activity-required' | translate}}</div>
+          </div>
+        </div>
+        <!--Raison sociale-->
+        <div class="form-group">
+          <label for="companyName">{{'raison-sociale' | translate}} :</label>
+          <input type="text" class="form-control" name="companyName" [(ngModel)]="pro.companyName"
+            #companyName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && companyName.invalid }" required
+            [disabled]="rightUrl" />
+          <div *ngIf="f.submitted && companyName.invalid" class="invalid-feedback">
+            <div *ngIf="companyName.errors.required">{{'required-companyName' | translate}}</div>
+          </div>
+        </div>
+        <!--Adresse-->
+        <div class="form-group">
+          <label for="address">{{'adresse' | translate}} :</label>
+          <input type="text" class="form-control" name="adresse" [(ngModel)]="pro.user.address.address"
+            #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required
+            [disabled]="rightUrl" />
+
+          <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+            <div *ngIf="address.errors.required">{{'required-adress' | translate}}</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="zipCode">{{'zipcode' | translate}} : </label>
+          <input google-place type="number" class="form-control" name="zipCode" value="{{code_postal}}"
+            [(ngModel)]="pro.user.address.zipCode" #zipCode="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && zipCode.invalid }" required [disabled]="rightUrl"
+            onKeyPress="if(this.value.length==5) return false;" (onSelect)="setAddress($event)" placeholder="" />
+
+
+          <div *ngIf="f.submitted && zipCode.invalid" class="invalid-feedback">
+            <div *ngIf="zipCode.errors.required">{{'required-zipcode' | translate}}</div>
+          </div>
+        </div>
+        <!--Ville-->
+        <div class="form-group">
+          <label for="city">{{'ville' | translate}} :</label>
+          <input type="text" class="form-control" name="city" value="{{ville}}" [(ngModel)]="pro.user.address.city"
+            #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required [disabled]="rightUrl" />
+
+          <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+            <div *ngIf="city.errors.required">{{'required-city' | translate}}</div>
+          </div>
+        </div><br>
+        <!--Pays-->
+        <div class="form-group">
+          <ng-select [multiple]="false" [closeOnSelect]="false" [searchable]="false" bindLabel="{{pays}}"
+            bindValue="{{pays}}" placeholder="{{'pays' | translate}} :" [(ngModel)]="pro.user.address.country" name="country"
+            [disabled]="rightUrl">
+          </ng-select>
+
+        </div>
+        <div class="form-group">
+
+          <input type="hidden" class="form-control" name="lat" value="{{lat}}" [(ngModel)]="pro.user.address.latitude"
+            #lat="ngModel"[disabled]="rightUrl" />
+
+        </div>
+        <div class="form-group">
+
+          <input type="hidden" class="form-control" name="lng" value="{{lng}}" [(ngModel)]="pro.user.address.longitude"
+            #lng="ngModel"  [disabled]="rightUrl" />
+
+        </div>
+
+      </div>
+      <div class="col-md-6 lang">
+        <!--Langues-->
+        <div class="form-group select-lang-pro">
+          <ng-select [items]="langs" [multiple]="true" [closeOnSelect]="false" [searchable]="false" bindLabel="name"
+            bindValue="id" placeholder="{{'lang' | translate}}" [(ngModel)]="pro.user.languages" name="lang"
+            [disabled]="rightUrl">
+          </ng-select>
+
+          <!-- <div *ngIf="f.submitted && lang.invalid" class="invalid-feedback">
+                      <div *ngIf="lang.errors.required">Langue parlée requis</div>
+                  </div> -->
+        </div>
+        <!--Prénom-->
+        <div class="form-group prenom">
+          <label for="firstName">{{'prenom' | translate}} :</label>
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="pro.user.firstName" #firstName="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required [disabled]="rightUrl" />
+
+          <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+            <div *ngIf="firstName.errors.required">{{'required-firstname' | translate}}</div>
+          </div>
+        </div>
+        <!--Nom-->
+        <div class="form-group">
+          <label for="lastName">{{'nom' | translate}} :</label>
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="pro.user.lastName" #lastName="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required [disabled]="rightUrl" />
+
+
+          <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+            <div *ngIf="lastName.errors.required">{{'required-lastname' | translate}}</div>
+          </div>
+        </div>
+        <!--Téléphone-->
+        <div class="form-group">
+          <label for="phone">{{'phone-number' | translate}} :</label>
+          <input type="text" class="form-control" name="phone" [(ngModel)]="pro.user.phone" #phone="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required [disabled]="rightUrl" maxlength="10" />
+
+          <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+            <div *ngIf="phone.errors.required">{{'required-phone' | translate}}</div>
+          </div>
+        </div>
+        <!--Email-->
+        <div class="form-group">
+          <label for="addressEmail">{{'email' | translate}} :</label>
+          <input type="email" class="form-control" name="addressEmail" [(ngModel)]="pro.user.email"
+            #addressEmail="ngModel" [ngClass]="{ 'is-invalid': f.submitted && addressEmail.invalid }" required email />
+          <div *ngIf="f.submitted && addressEmail.invalid" class="invalid-feedback">
+            <div *ngIf="addressEmail.errors.required">{{'required-email' | translate}}</div>
+            <div *ngIf="addressEmail.errors.email">{{'invalid-email' | translate}}</div>
+          </div>
+        </div>
+        <!--Mot de passe-->
+        <div class="form-group">
+          <label for="plainPassword">{{'psw' | translate}} :</label>
+          <input type="password" class="form-control" name="plainPassword" [(ngModel)]="pro.user.plainPassword.first"
+            #plainPassword="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && (plainPassword.invalid || pro.user.plainPassword.first != pro.user.plainPassword.second) }"
+            required minlength="6" [disabled]="rightUrl" />
+
+          <div *ngIf="f.submitted && plainPassword.invalid" class="invalid-feedback">
+            <div *ngIf="plainPassword.errors.required">{{'required-psw' | translate}}</div>
+            <div *ngIf="plainPassword.errors.minlength">{{'required-psw-length' | translate}}</div>
+          </div>
+        </div>
+        <!--Confirmation mot de passe-->
+        <div class="form-group">
+          <label for="secPassword">{{'psw-confirm' | translate}} :</label>
+          <input type="password" class="form-control" name="secPassword" [(ngModel)]="pro.user.plainPassword.second"
+            #secPassword="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && (secPassword.invalid || pro.user.plainPassword.first != pro.user.plainPassword.second) }"
+            required minlength="6" [disabled]="rightUrl" />
+
+          <div *ngIf="f.submitted && secPassword.invalid" class="invalid-feedback">
+            <div *ngIf="secPassword.errors.required">{{'required-psw' | translate}}</div>
+            <div *ngIf="secPassword.errors.minlength">{{'required-psw-length' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <!--Bouton inscription-->
+      <div class="form-group btn-accept-condition">
+        <button class="btn btn-primary button-inscrit" type="submit" name="action"
+          title="Veuillez accepter nos conditions" [ngClass]="{'button-loader button-loader--loading' : loading}">{{'free-inscription'| translate}}</button>
+        <p class="accept-cond-pro">
+          {{'accept-cond-pro-1' | translate}} <a
+            id="condition-utilisation" href='' [routerLink]="['/conditions-generales-utilisations']" data-toggle="modal"
+            data-target="#CGU" target="_blank">{{'CGU' | translate}}</a> {{'accept-cond-pro-2' | translate}} <a id="politique-confidentialite"
+            href='' [routerLink]="['/politique-confidentialite']" data-toggle="modal" data-target="#PC"
+            target="_blank">{{'PC' | translate}}</a>.
+            {{'accept-cond-pro-3' | translate}} <a
+            id="email-website">dpo@parpro.fr</a>.</p>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <h4 class="text-center">{{'real-time-demand-title' | translate}}! <br><br> <b>{{'real-time-demand' | translate}}</b>
+    </h4>
+    <div class="request-list" ngx-auto-scroll>
+      <div class="vertical-comments" [@listAnimation]="comments.length">
+        <div *ngFor="let comment of comments" class="request">
+          <div class="media">
+            <div class="media-left">
+              <a>
+                <img class="media-object" src="../../../assets/img/person.png" alt="">
+              </a>
+            </div>
+            <div class="media-body">
+              <p>Pseudo : {{comment?.name}}</p>
+              <p>Ville : {{comment?.city}}</p>
+              <p class="demand">Demande : {{comment?.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row text-center stats-box">
+  <div class="col-md-4">
+    <img src="../../../assets/img/setting.png" class="img-responsive center-block" width="50">
+    <h4>{{'how-work'| translate}}</h4>
+    <p class="stat">{{'how-work-1'| translate}}</p>
+    <p class="stat">{{'how-work-2'| translate}}</p>
+    <p class="stat">{{'how-work-3'| translate}}</p>
+    <p class="stat">{{'how-work-4'| translate}}</p>
+  </div>
+  <div class="col-md-4">
+    <img src="../../../assets/img/bourse-up.png" class="img-responsive center-block" width="50">
+    <h4>{{'stat' | translate}}</h4>
+    <p class="stat">{{'stat-1' | translate}}</p>
+    <p class="stat">{{'stat-2' | translate}}
+    </p>
+    <p class="stat">{{'stat-3' | translate}}</p>
+  </div>
+  <div class="col-md-4">
+    <img src="../../../assets/img/check.png" class="img-responsive center-block" width="50">
+    <h4>{{'quality-security'| translate}}</h4>
+    <p class="stat">{{'quality-security-1'| translate}}</p>
+    <p class="stat">{{'quality-security-2'| translate}}</p>
+    <p class="stat">{{'quality-security-3'| translate}}</p>
+  </div>
+</div>
+
+<!--Modal CGU-->
+<div class="modal fade" id="CGU" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <!-- Add #closeBtn -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal body -->
+        <fws-cond-gen></fws-cond-gen>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal PC-->
+<div class="modal fade" id="PC" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <!-- Add #closeBtn -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal body -->
+        <fws-politique></fws-politique>
+      </div>
+    </div>
+  </div>
+</div>

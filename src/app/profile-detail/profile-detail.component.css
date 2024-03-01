@@ -1,0 +1,282 @@
+.delete-button {
+  float: right;
+  color: white;
+  border-radius: 30%;
+  padding: 5px 10px;
+  margin-top: -33px;
+}
+.name{
+  text-align: center;
+}
+
+.about {
+  margin-left: -40px;
+}
+
+.btn-doc {
+  display: flex;
+}
+
+input[type=file] {
+  margin-top: 20px;
+  border-bottom: none;
+}
+
+.voir {
+  margin-right: 10px;
+}
+
+.avatar-upload .avatar-preview {
+  width: 100px;
+  height: 100px;
+  padding: 0;
+}
+
+.avatar-upload {
+  position: relative;
+  max-width: 100px;
+  display: inline-block;
+  margin: 5px 5px;
+}
+
+.avatar-upload .avatar-edit input+label {
+  width: 100px;
+  height: 100px;
+  border-radius: 0;
+
+}
+
+.avatar-upload .avatar-edit input+label:after {
+  display: none;
+}
+
+.images-realizations {
+  margin-top: 30px;
+}
+
+
+.legal-informations {
+  text-align: start;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 25px;
+
+}
+
+.left-block {
+  margin-right: 10% !important;
+  width:45%;
+ 
+}
+.right-block{
+  width:30%
+}
+.lable-legal {
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.img-wrap .close {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  z-index: 100;
+  background-color: #FFF;
+  padding: 5px 2px 2px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: .2;
+  text-align: center;
+  font-size: 22px;
+  line-height: 10px;
+  border-radius: 50%;
+}
+
+.img-wrap:hover .close {
+  opacity: 1;
+}
+
+.btn-danger {
+  color: white;
+  border-radius: 30%;
+  padding: 5px 10px;
+  margin-top: -33px;
+}
+
+.add-service {
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.services-style {
+  height: 70px;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-upload {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+@media screen and (max-width: 900px) {
+
+  label,
+  .legal-informations,
+  
+  .images-realizations,
+  .upload-list,
+  .help-block,
+  .btn-add-photo {
+    text-align: start;
+    margin-left: 5%;
+  }
+
+  input[type=text],
+  input[type=file],
+  input[type=date],
+  input[type=number],
+  input[type=radio] {
+    text-align: start;
+    margin-left: 5%;
+  }
+
+  textarea {
+    text-align:justify;
+    margin-left:-3%;
+  }
+
+  .add-service {
+    cursor: pointer;
+    margin-top: 20px;
+    text-decoration: none;
+    margin-right: 5%
+  }
+
+  .services-style {
+    width: 90%;
+  }
+
+  .btn-doc {
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 80%
+  }
+
+  .voir {
+    padding: auto;
+    text-align: center;
+
+    margin-left: 5%;
+  }
+
+  .modify {
+
+    text-align: center;
+    padding-left: -5px;
+
+
+  }
+
+  .btn {
+    padding: 10px 20px;
+  }
+
+  .lable-legal {
+    font-size: 0.9em;
+  }
+
+  .footer-btn {
+    padding: 10px 20px;
+    text-align: center
+  }
+
+  .save {
+    text-align: center;
+    margin-bottom: 5%;
+    margin-left: 8%
+  }
+
+  .view {
+    text-align: center;
+    margin-left: 8%
+  }
+  .doc-send-email{
+    margin-left:5%;
+  margin-right:5%;
+text-align: justify;
+font-size:1em;  }
+.left-block {
+  margin-right: 10% !important;
+  width:90%;
+ 
+}
+.right-block{
+  width:90%
+}
+form{
+  margin-top:25%
+}
+.about{
+  margin-left:1%;
+}
+}
+/*iPad*/
+@media only screen and (height: 1024px) and (width: 768px) {
+  form{
+    margin-top:-18%
+  }
+  .services-style {
+    width: 50%;
+    margin-left: 100px;
+  }
+  .add-service{
+    margin-top:10%;
+    margin-right:10%
+  }
+  .serv{
+margin-right:100px;
+margin-bottom:20px;
+  }
+  .about{
+    margin-left:-9%;
+  }
+}
+/*iPad PRO*/
+@media only screen and (height: 1366px) and (width: 1024px) {
+  form{
+    margin-top:-18%
+  }
+}
+
+@media (max-width: 600px) {
+  form{
+    margin-top:40%
+  }
+}

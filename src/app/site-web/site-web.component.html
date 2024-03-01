@@ -1,0 +1,147 @@
+<p id="first-line-form-site">{{'website-header-1' | translate}}</p>
+<p id="second-line-form-site">
+  {{'website-header-2' | translate}}<br>{{'website-header-3' | translate}}</p>
+
+<div class="col-md-3"></div>
+<div class="col-md-8 col-xs-12 col-md-offset-1">
+  <form id='form-site' name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate width="50%">
+    <div class="identifiant-container">
+      <div class="form-group question-call">
+        <input id="nom-site-owner" type="text" class="form-control" placeholder="{{'nom' | translate}}" name="firstName"
+          [(ngModel)]="site.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+          <div *ngIf="firstName.errors.required && !submitted">{{'required-lastname'}}</div>
+        </div>
+      </div>
+      <div class="form-group question-call">
+        <input id="prenom-site-owner" type="text" class="form-control" placeholder="{{'prenom' | translate}}"
+          name="lastName" [(ngModel)]="site.lastName" #lastName="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+          <div *ngIf="lastName.errors.required && !submitted">Prénom non valide.</div>
+        </div>
+      </div>
+    </div>
+    <div class="email-phone-container">
+      <div class="form-group question-call">
+        <input id="emailSite" type="email" class="form-control" name="emailSite" placeholder="{{'email' | translate}}"
+          required ng-pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="site.email" [email]="true"
+          #emailSite="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emailSite.invalid }" required email />
+        <div *ngIf="f.submitted && emailSite.invalid" class="invalid-feedback">
+          <div *ngIf="emailSite.errors.required && !submitted">{{'required-email' | translate}}</div>
+          <div *ngIf="emailSite.errors.email">{{'invalid-email' | translate}}</div>
+        </div>
+      </div>
+
+
+      <div class="form-group question-call">
+        <input id="phone" type="text" class="validate form-control" placeholder="{{'phone' | translate}}" name="phone"
+          [(ngModel)]="site.phone" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required
+          maxlength="10" />
+        <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+          <div *ngIf="phone.errors.required && !submitted">{{'required-telephone' | translate}}</div>
+        </div>
+      </div>
+    </div>
+
+ <div class="address-container">
+      <div class="form-group question-call">
+        <input google-place id="name" type="text" value="{{code_postal}}" class="form-control"
+          placeholder="{{'zipcode' | translate}}" name="zipCode" [(ngModel)]="site.address.zipCode" #zipCode="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && zipCode.invalid }" required maxlength="5"
+          (onSelect)="setAddress($event)" />
+        <div *ngIf="f.submitted && zipCode.invalid" class="invalid-feedback">
+          <div *ngIf="zipCode.errors.required && !submitted">{{'required-zipcode' | translate}}</div>
+        </div>
+      </div>
+      <div class="form-group question-call">
+        <input id="name" type="text" class="form-control" value="{{ville}}" placeholder="{{'ville' | translate}}"
+          name="city" [(ngModel)]="site.address.city" #city="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required />
+        <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+          <div *ngIf="city.errors.required && !submitted">{{'required-city' | translate}}</div>
+        </div>
+      </div>
+
+      <div class="row row1">
+        <div class="col-md-3"></div>
+        <div class="form-group col-md-5 adresse-container">
+          <input type="hidden" placeholder="Adresse" class="form-control" #address="ngModel" name="address"
+            [(ngModel)]="site.address.address" id="adresse-annonce" value={{adresse}}/>
+        </div>
+      </div>
+  
+  <div class="row row1">
+        <div class="col-md-3"></div>
+        <div class="form-group col-md-5 city-container">
+          <input type="hidden" placeholder="Pays" class="form-control" value="{{country}}" #country="ngModel"
+            name="country" [(ngModel)]="site.address.country" id="country-annonce" />
+        </div>
+      </div>
+      <div class="row row1">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+          <input type="hidden" class="form-control" value="{{latitude}}" name="latitude"
+            [(ngModel)]="site.address.latitude" #latitude="ngModel" />
+        </div>
+      </div>
+      <div class="row row1">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+          <input type="hidden" class="form-control" value="{{longitude}}" name="longitude"
+            [(ngModel)]="site.address.longitude" #longitude="ngModel" placeholder="" />
+        </div>
+      </div>
+
+   
+     
+
+    </div> 
+    <div class="form-group question-call activity-site">
+      <select id="activity1" class="form-control activit" name="activity" [(ngModel)]="site.activity"
+        #activity="ngModel">
+        <option id="select-activity" value="" disabled>{{'select-speciality' | translate}}</option>
+        <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+      </select>
+
+      <div *ngIf="f.submitted && activity.invalid" class="invalid-feedback">
+        <div *ngIf="activity.errors.required && !submitted">{{'activity-required' | translate}}</div>
+      </div>
+    </div>
+    <div class="form-group question-call description-website">
+      <textarea name="note" rows="5" id="note-site" type="text" class="validate form-control" #description="ngModel"
+        [(ngModel)]="site.description" placeholder="{{'write-description' | translate}}"
+        [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" required> </textarea>
+      <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+        <div *ngIf="description.errors.required && !submitted">{{'required-note' | translate}}</div>
+      </div>
+    </div>
+    <div class="send-demand">
+      <button class="btn btn-primary site-creation" type="submit" name="action"
+        [ngClass]="{'button-loader button-loader--loading' : loading}">{{'create-site' | translate}}</button>
+
+    </div>
+    <p class="condition-website">{{'site-condition' | translate}}</p>
+    <p class="condition-website-2">{{'politique-site' | translate}}<a href=""
+        [routerLink]="['/politique-confidentialite']" data-toggle="modal" data-target="#PC-site"
+        id="politique-confidentialite-site"> {{'click-here' | translate}}</a>.
+    </p>
+  </form>
+</div>
+<div class="col-md-3"></div>
+<div class="modal fade" id="PC-site" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <!-- Add #closeBtn -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal body -->
+        <fws-politique></fws-politique>
+      </div>
+    </div>
+  </div>
+</div>

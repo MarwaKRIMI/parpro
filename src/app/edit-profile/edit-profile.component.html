@@ -1,0 +1,100 @@
+<ngx-alerts></ngx-alerts>
+
+<div class="header-edit-profile">
+  <h3 class="parameter">
+    {{'parametres-compte' | translate}}
+  </h3>
+</div>
+<form *ngIf='me' name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <!--Photo-->
+  <div class="col-md-3 col-xs-12 photo">
+
+    <div class="avatar-upload" width="100%">
+      <div class="avatar-edit">
+        <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="readURL($event);">
+        <label for="imageUpload"></label>
+      </div>
+      <div class="avatar-preview">
+        <div id="imagePreview" [style.backgroundImage]='me.avatar  ? (me.avatar.webPath ? makeTrustedImage(me.avatar.webPath) : makeTrustedImage(me.avatar)) : makeTrustedImage("../../assets/img/person-empty.png")'>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+
+    <!--Prénom-->
+    <div class="form-group">
+      <label for="firstName">{{'prenom' | translate}} : </label>
+      <input type="text" class="form-control" placeholder="Taper votre prénom ici" name="firstName" [(ngModel)]="me.firstName"
+        #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+      <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+        <div *ngIf="firstName.errors.required">{{'required-firstname' | translate}}</div>
+      </div>
+    </div>
+
+    <!--Raison sociale-->
+    <div *ngIf="authService.getUserRole() == 'Professional'" class="form-group">
+      <label for="companyName">{{'raison-sociale' | translate}} : </label>
+      <input type="text" class="form-control" placeholder="Taper votre raison sociale ici" name="companyName" [(ngModel)]="professional.companyName"
+        #companyName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && companyName.invalid }" required />
+      <div *ngIf="f.submitted && companyName.invalid" class="invalid-feedback">
+        <div *ngIf="companyName.errors.required">{{'required-companyName' | translate}}</div>
+      </div>
+    </div>
+
+    <!--Téléphone-->
+    <div class="form-group">
+      <label for="phone">{{'phone-number' | translate}} :</label>
+      <input type="text" class="form-control" placeholder="Taper votre Numéro ici" name="phone" [(ngModel)]="me.phone"
+        #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required />
+      <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+        <div *ngIf="phone.errors.required">{{'required-phone' | translate}}</div>
+      </div>
+    </div>
+    <!--Email-->
+    <div *ngIf="authService.getUserRole() == 'Particular'" class="form-group">
+      <label for="addressEmail">{{'email' | translate}}</label>
+      <input readonly type="email" class="form-control" name="addressEmail" placeholder="Taper votre texte ici"
+        [(ngModel)]="me.email" #addressEmail="ngModel" email />
+    </div>
+
+  </div>
+
+  <div class="col-md-5">
+
+    <!--Nom-->
+    <div class="form-group">
+      <label for="lastName">{{'nom' | translate}} :</label>
+      <input type="text" class="form-control" placeholder="Taper votre Nom ici" name="lastName" [(ngModel)]="me.lastName"
+        #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+      <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+        <div *ngIf="lastName.errors.required">{{'required-lastname' | translate}}</div>
+      </div>
+    </div>
+    <!--Adresse-->
+    <div class="form-group">
+      <label for="city">{{'ville' | translate}} :</label>
+      <input type="text" class="form-control" placeholder="Taper votre ville ici" name="adresse" [(ngModel)]="me.address.city"
+        #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required />
+      <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+        <div *ngIf="city.errors.required">{{'required-adress' | translate}}</div>
+      </div>
+    </div>
+
+
+
+    <!--Email-->
+    <div *ngIf="authService.getUserRole() == 'Professional'" class="form-group">
+      <label for="addressEmail">{{'email' | translate}}</label>
+      <input readonly type="email" class="form-control" name="addressEmail" placeholder="Taper votre texte ici"
+        [(ngModel)]="me.email" #addressEmail="ngModel" email />
+    </div>
+
+    <div class="btn-modify-parameter">
+      <button class="btn btn-primary pull-right" [disabled]="loading" [ngClass]="{'button-loader button-loader--loading' : loading}">{{'modify'| translate}}</button>
+    </div>
+  </div>
+
+</form>

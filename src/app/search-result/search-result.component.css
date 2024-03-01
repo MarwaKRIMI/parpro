@@ -1,0 +1,476 @@
+.result-title {
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: -6%;
+  
+
+}
+
+.description {
+
+  text-align: justify;
+  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  color: #999;
+  width: 250px;
+}
+
+ul#horizontal-list {
+  min-width: 696px;
+  list-style: none;
+}
+
+ul#horizontal-list li {
+  display: inline;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#horizontal-list {
+  margin-left: 10%;
+  margin-right: 10%
+}
+
+.media-object {
+  width: 100px !important;
+  height: 100px !important;
+  margin-right: 20px !important
+}
+.request-list{
+  scroll-behavior: smooth!important;
+}
+
+.view {
+  color: #0596de;
+  margin-left: -20px;
+  ;
+}
+
+#no-realisation {
+  margin-right: 20px;
+}
+
+#one-real-blur {
+  width: 100px;
+  height: 100px;
+  margin-top: 50px;
+  margin-left: -50px;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  border-radius: 0% !important
+}
+
+#one-real-nette {
+  width: 100px;
+  height: 100px;
+  margin-top: 50px;
+  margin-left: -50px;
+  border-radius: 0% !important
+}
+
+#service {
+  display: inline-block
+}
+
+.name-pro {
+  display: flex;
+}
+
+.media-body {
+  padding-left: 20px;
+}
+
+#profil-btn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#first-real-blur {
+  width: 100px;
+  height: 100px;
+  border-radius: 0% !important;
+  margin-top: 30px;
+  margin-left: -50px;
+  margin-right: 20px;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
+
+#first-real-nette {
+  width: 100px;
+  height: 100px;
+  border-radius: 0% !important;
+  margin-top: 30px;
+  margin-left: -50px;
+  margin-right: 20px;
+
+
+}
+
+#second-real-blur {
+  width: 100px;
+  height: 100px;
+  border-radius: 0% !important;
+  margin-top: 30px;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
+
+#second-real-nette {
+  width: 100px;
+  height: 100px;
+  border-radius: 0% !important;
+  margin-top: 30px;
+
+
+}
+
+.media-right {
+  margin-top: 100px
+}
+.maps{
+position: -webkit-sticky;
+position: sticky;
+top:0;
+margin-top:5% !important
+}
+.request .media-left a img {
+  border-radius: 90px;
+  width: 90px;
+  height: 90px;
+}
+
+.request {
+  margin-top: 5px!important;
+  background: #ffffff;
+  color: #001847;
+  border-radius: 15px !important;
+}
+
+.request:hover{
+ border:1px solid #0596de !important
+}
+.media {
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+}
+
+.result {
+  margin-top: 50px;
+}
+
+
+
+#name-pro {
+  font-weight: bold;
+  font-size: 18px;
+  color: #444
+}
+
+#pro {
+  font-weight: bold;
+  background: #ccc;
+  color: white;
+  border-radius: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  margin-left: 2px;
+  height: 18px;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-top: 2px
+}
+
+#ville-pro {
+  font-size: 15px;
+  font-weight: 600;
+  color: #999;
+}
+
+#activity-pro {
+  font-size: 15px;
+  font-weight: 600;
+  color: #757575;
+}
+
+
+
+
+.icon {
+  width: 40px;
+}
+
+
+.iconVille,
+.iconSearch {
+  font-size: 27px;
+  margin-top: 10px;
+  color: rgba(170, 168, 168, 0.815);
+}
+
+#activity {
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.form-control {
+  border-bottom: none;
+}
+
+input::-webkit-input-placeholder {
+  color: #3a4d72 !important;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.recherche {
+  color: #fff;
+  font-weight: bold;
+  height: 50px;
+  width: 150px;
+  margin-left: 37%;
+  background-color: #ff7e00;
+  border-color: transparent;
+  border-radius: 0px 15px 15px 0px;
+}
+.recherche:focus {
+  color: #fff;
+  font-weight: bold;
+  height: 50px;
+  width: 150px;
+  margin-left: 37%;
+  background-color: #ff7e00;
+  border-color: transparent;
+  border-radius: 0px 15px 15px 0px;
+  text-decoration: none !important
+}
+
+.rowSearch {
+  height: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 15px;
+
+}
+
+#villa {
+  margin-top: 10px !important;
+}
+
+.mm {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+
+  .rowSearch {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    margin-bottom: 50%
+  }
+
+  .activit {
+    padding-top: 0px;
+    margin-top: -52px !important;
+    font-size: 12px;
+    margin-left: 15px
+  }
+
+  #villa {
+    font-size: 12px;
+    margin-top: 8px
+  }
+
+  .part {
+    margin-top: 40% !important;
+  }
+
+  .recherche {
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-left: 20%
+  }
+
+  .about {
+    font-size: 1.5em
+  }
+
+  .ss,
+  .mm {
+    background-color: white;
+    border-radius: 15px
+  }
+
+  .pro-btn,
+  .part-btn,
+  .savoir {
+    margin-bottom: 5%;
+  }
+
+  .request {
+    width: 100%;
+  }
+
+  #one-real-blur,
+  #one-real-nette,
+  #first-real-blur,
+  #first-real-nette {
+    display: none
+  }
+
+  .mm {
+    height: 50px !important;
+  }
+
+  .description {
+    margin-right: 5%
+  }
+}
+
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .rowSearch {
+    margin-top: -20%;
+    margin-bottom: 15%
+  }
+
+  #villa {
+    margin-top: 8px
+  }
+
+  .result {
+    margin-left: 8%;
+    margin-top: -40px
+  }
+
+}
+
+@media only screen and (width: 768px) and (height: 1024px) {
+  .rowSearch {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10%;
+    margin-bottom: -20%
+  }
+
+  .result-title {
+    margin-top: 50%
+  }
+
+  .activit {
+    padding-top: 0px;
+    margin-top: -52px !important;
+    margin-left: 15px
+  }
+
+  .part {
+    margin-top: 40% !important;
+  }
+
+  .recherche {
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-left: 20%
+  }
+
+  .about {
+    font-size: 1.5em
+  }
+
+  .ss,
+  .mm {
+    background-color: white;
+    border-radius: 15px
+  }
+
+  .mm {
+    height: 48px;
+  }
+
+  .pro-btn,
+  .part-btn,
+  .savoir {
+    margin-bottom: 5%;
+  }
+
+  .request {
+    width: 100%;
+    
+  }
+
+  .request-list {
+    margin-left: 10%;
+  
+  }
+
+  .result-title {
+    margin-left: 10%;
+  }
+
+  #villa {
+    margin-left: 0px;
+    margin-top: 8px;
+  }
+
+  #second-real-blur,
+  #second-real-nette {
+    display: none
+  }
+}
+
+@media only screen and (width: 320px) and (height: 568px) {
+  .form-control {
+    font-size: 10px;
+  }
+
+  .rowSearch {
+    margin-top: 40%
+  }
+
+  .request-list {
+    width: 110%;
+
+  }
+
+  .description {
+    margin-right: 15%
+  }
+
+  .request {
+    margin-left: -5%
+  }
+
+  #one-real-blur,
+  #one-real-nette,
+  #first-real-blur,
+  #first-real-nette,
+  #second-real-blur,
+  #second-real-nette {
+    display: none
+  }
+}
+agm-map {
+  height: 500px;
+  width: 400px;
+}
+.activit, .ville{
+  box-shadow: none !important
+
+}

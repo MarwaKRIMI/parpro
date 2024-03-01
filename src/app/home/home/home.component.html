@@ -1,0 +1,135 @@
+<ngx-alerts></ngx-alerts>
+<div class="row rowSearchHome">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="ss">
+      <div class="form-group icon col-md-1"><i class="iconSearch fa fa-search"></i></div>
+      <div class="form-group col-md-6">
+        <select id="activity" class="form-control activit" name="activity" [(ngModel)]="filter.activity"
+          #activity="ngModel">
+          <option id="select-activity" value="" disabled>{{'Sélectionner votre activité' | translate}}</option>
+          <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group col-md-3 mm">
+      <i class="iconVille fa fa-map-marker"></i>
+      <label for="address"></label>
+      <input google-place type="text" value="{{code_postal}}" class="form-control ville" placeholder="{{'ou' | translate}} ?"
+        name="address" [(ngModel)]="filter.address" list="address"  (onSelect)="setAddress($event)"/>
+      <datalist id="address">
+        <option value="{{code_postal}}" (onSelect)="setAddress($event)" maxlength="5">{{code_postal}}</option>
+      </datalist>
+    </div>
+    <div class="col-md-2">
+      <button class="recherche" type="submit" name="action">{{'recherche' | translate}}</button>
+    </div>
+  </form>
+</div>
+
+
+ 
+<div class="row slide-home">
+  <div class="col-md-7 description">
+    <h1 class="about part">{{'home-title-part-first' | translate}}</h1> <br>
+    <p class="description-text">
+      {{'home-title-part-second' | translate}}
+    </p>
+    <p class="description-text">
+      {{'home-title-part-third' | translate}}
+    </p>
+    <p>
+    </p>
+    <div class="buttons-part">
+      <a href="" [routerLink]="['plus-info-part']" class="btn btn-primary savoir">{{'Savoir-plus' | translate}}</a>
+      <a *ngIf="!authService.isLoggedIn()" href="" [routerLink]="['demande/particulier']"
+        class="btn btn-primary part-btn">{{'Vous-etes-part' | translate}} ?</a>
+      <a *ngIf="authService.isLoggedIn() && authService.getUserRole() === 'Particular'" href="" [routerLink]="['/']"
+        disabled class="btn btn-primary part-btn">{{'Vous-etes-part' | translate}} ?</a>
+      <a *ngIf="authService.isLoggedIn() && authService.getUserRole() === 'Professional'" href=""
+        [routerLink]="['demande/particulier']" class="btn btn-primary part-btn">{{'Vous-etes-part' | translate}} ?</a>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel2" data-slide-to="1"></li>
+        <li data-target="#myCarousel2" data-slide-to="2"></li>
+      </ol>
+      <div class=" carousel-inner">
+        <div class="item active">
+          <img src="../assets/img/particulier-first-slider.png">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../assets/img/particulier-second-slider.png">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../assets/img/particulier-third-slider.png">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row text-center slide-home">
+  <div class="col-md-5">
+    <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="5000">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel1" data-slide-to="1"></li>
+        <li data-target="#myCarousel1" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../assets/img/pro-first-slider.png">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../assets/img/pro-second-slider.png">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../assets/img/pro-third-slider.png">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7 description">
+    <h1 class="about pro">{{'home-title-pro-first' | translate}}</h1> <br>
+    <p class="description-text">
+      {{'home-title-pro-second' | translate}}
+    </p>
+    <p class="description-text">
+      {{'home-title-pro-third' | translate}}
+    </p>
+    <p>
+    </p>
+    <div class="buttons-pro">
+      <a href="" [routerLink]="['plus-info-pro']" class="btn btn-primary savoir">{{'Savoir-plus' | translate}}</a>
+      <a *ngIf="!authService.isLoggedIn()" href="" [routerLink]="['register/professionnel']"
+        class="btn btn-primary pro-btn">{{'Vous-etes-pro' | translate}}?</a>
+      <a *ngIf="authService.isLoggedIn() && authService.getUserRole() === 'Particular'" href=""
+        [routerLink]="['register/professionnel']" class="btn btn-primary pro-btn">{{'Vous-etes-pro' | translate}}?</a>
+      <a *ngIf="authService.isLoggedIn() && authService.getUserRole() === 'Professional'" href="" [routerLink]="['/']"
+        disabled class="btn btn-primary pro-btn">{{'Vous-etes-pro' | translate}}?</a>
+    </div>
+  </div>
+</div>
+<div class="row text-center home-vedio">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe width="853" height="550" src="https://www.youtube.com/embed/O_iZhZiAiVc?rel=0" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>

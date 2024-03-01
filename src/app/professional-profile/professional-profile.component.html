@@ -1,0 +1,230 @@
+<ngx-alerts></ngx-alerts>
+<div class="col-md-3 col-xs-12 arriere-plan">
+  <div class="col-md-offset-1 col-md-12 col-sm-6 col-xs-12 card-image">
+    <img id="profil-img"
+      [src]="professional.user.avatar ? professional.user.avatar.webPath : '../../assets/img/person-empty.png'"
+      width="100%">
+    <div class="lang">
+      <span class="lang">{{'Langues' | translate}}: </span>
+      <div class="languages" *ngFor='let lang of professional.user.languages'>
+        <div *ngIf="lang.name=='Turc'"><span class="flag-icon flag-icon-tr"></span></div>
+        <div *ngIf="lang.name=='Français'"><span class="flag-icon flag-icon-fr"></span></div>
+        <div *ngIf="lang.name=='Italien'"><span class="flag-icon flag-icon-it"></span></div>
+        <div *ngIf="lang.name=='Anglais'"><span class="flag-icon flag-icon-gb eng"></span></div>
+        <div *ngIf="lang.name=='Portugais'"><span class="flag-icon flag-icon-pt"></span></div>
+        <div *ngIf="lang.name=='Espagnol'"><span class="flag-icon flag-icon-es"></span></div>
+        <div *ngIf="lang.name=='Néerlandais'"><span class="flag-icon flag-icon-nl"></span></div>
+        <div *ngIf="lang.name=='Polonais'"><span class="flag-icon flag-icon-pl"></span></div>
+        <div *ngIf="lang.name=='Norvégien'"><span class="flag-icon flag-icon-no"></span></div>
+        <div *ngIf="lang.name=='Russe'"><span class="flag-icon flag-icon-ru"></span></div>
+        <div *ngIf="lang.name=='Suédois'"><span class="flag-icon flag-icon-se"></span></div>
+        <div *ngIf="lang.name=='Arabe'"><span class="flag-icon flag-icon-dz"></span></div>
+        <div *ngIf="lang.name=='Allemand'"><span class="flag-icon flag-icon-de"></span></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isConnected" class="form-group col-md-12 connected-user">
+    <div class="raison-sociale-content">
+      <label class="raison-sociale" for="phone">{{'raison-sociale' | translate}} : &nbsp;</label>
+      <input #phone id="phone" name="phone" class="form-control" value="{{professional.companyName}}" disabled>
+    </div>
+    <div class="name-content">
+      <label class="name" for="name">{{'nom' | translate}} & {{'prenom' | translate}} : &nbsp;</label>
+      <input #name id="name" name="name" class="form-control"
+        value="{{professional.user.firstName}} {{professional.user.lastName}}" disabled>
+    </div>
+    <div class="email-content">
+      <label class="email" for="email">{{'email' | translate}} : &nbsp;</label>
+      <input #email id="email" type="email" name="email" class="form-control" value="{{professional.user.email}}"
+        disabled>
+    </div>
+    <div class="phone-content">
+      <label class="phone" for="phone">{{'phone-number' | translate}} :&nbsp;</label>
+      <input #phone id="phone" name="phone" class="form-control" value="{{professional.user.phone}}" disabled>
+    </div>
+    <div class="services-container">
+      <h4 class="legal-information serv">{{'nos-services' | translate}}</h4>
+      <div class="col-md-12 service-content">
+        <div *ngIf="professional?.services?.length > 0 && !isEmpty">
+          <div class="services center-text service-container" *ngFor='let diplome of professional.services'>
+            {{diplome}}&nbsp; | &nbsp;
+          </div>
+
+
+        </div>
+        <span *ngIf='isEmpty'>{{'non-renseigné' | translate}}</span>
+
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isConnected" class="form-group col-md-12 not-connected-user">
+    <div class="no-raison-content">
+      <label for="phone">{{'raison-sociale' | translate}} : &nbsp;</label>
+      <a class="view" href="" [routerLink]="['/connexion']">{{'voir' | translate}}</a>
+    </div>
+    <div class="no-name-content">
+      <label class="name" for="name">{{'nom' | translate}} & {{'prenom' | translate}} : &nbsp;</label>
+      <a class="view" href="" [routerLink]="['/connexion']">{{'voir' | translate}}</a>
+    </div><br>
+    <div class="no-email-content">
+      <label for="email">{{'email' | translate}} : &nbsp;</label>
+      <a class="view" href="" [routerLink]="['/connexion']">{{'voir' | translate}}</a>
+    </div><br>
+    <div class="no-phone-content">
+      <label for="phone">{{'phone-number' | translate}} :&nbsp;</label>
+      <a class="view" href="" [routerLink]="['/connexion']">{{'voir' | translate}}</a>
+    </div>
+    <div class="service">
+      <h4 class="legal-information serv">{{'nos-services' | translate}}</h4>
+      <div class="col-md-12 serv-content">
+        <div *ngIf="professional?.services?.length > 0 && !isEmpty">
+          <div class="services center-text service-div" *ngFor='let diplome of professional.services'>
+            {{diplome}}&nbsp; | &nbsp;
+          </div>
+
+        </div>
+        <span *ngIf='isEmpty'>{{'non-renseigné' | translate}}</span>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-8 col-xs-12 content">
+  <div class="container col-md-12">
+    <div class="row col-md-10 col-xs-12">
+      <div class="col-md-offset-1 col-md-12 col-xs-12 profil">
+        <div class="card horizontal">
+          <div class="col-md-12 card-stacked">
+            <div class="row">
+              <div class="col-md-12 col-xs-12 about-content">
+                <h4 class="legal-information about"> {{'about-metier' | translate}}</h4>
+                <p *ngIf="professional.experiences" class="experience">{{professional.experiences}}</p>
+                <p *ngIf="!professional.experiences" class="experience ">{{'non-renseigné' | translate}}</p>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 tab-menubar clearfix photos-content">
+      <div *ngIf="items.length" class="col-md-12">
+        <h4 class="legal-information">{{'photos-realisation' | translate}}</h4>
+        <div *ngFor="let item of items" class="col-md-4 col-sm-4 photo">
+          <img id="nette" *ngIf="isConnected" src="{{ item }}">
+          <img id="blur" *ngIf="!isConnected" src="{{ item }}">
+        </div>
+      </div>
+      <div *ngIf="!items.length" class="col-md-6">
+        <h4 class="legal-information">{{'photos-realisation' | translate}}</h4>
+        <div>
+          {{'non-renseigné' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="tab-menubar clearfix" class="col-md-6">
+      <div class="col-md-12 info-legales-container">
+        <div class="col-md-12 col-xs-12 form-group info-legales-content">
+          <h4 class="legal-information legal">{{'mes-info-legales' | translate}}</h4>
+          <div *ngIf="professional.denomination" class="margin-20">
+            <label class="label-legal">{{'Denomination' | translate}} :</label>
+            <span class="non-renseigne">{{professional.denomination}}</span> <br />
+          </div>
+          <div *ngIf="!professional.denomination" class="margin-20 denom">
+            <label class="label-legal">{{'Denomination' | translate}} :</label>
+            <span class="non-renseigne" *ngIf="!professional.denomination">{{'non-renseigné' | translate}}</span>
+          </div>
+          <div class="margin-20">
+            <label class="label-legal">{{'form-juridique' | translate}} :</label>
+            <span class="non-renseigne" *ngIf="professional.legalForm">{{professional.legalForm}}</span>
+            <span class="non-renseigne" *ngIf="!professional.legalForm">{{'non-renseigné' | translate}}</span>
+          </div>
+          <div class="margin-20">
+            <label class="label-legal">{{'Dirigeant' | translate}} :</label>
+            <span class="non-renseigne" *ngIf="professional.leader">{{professional.leader}}</span>
+            <span class="non-renseigne" *ngIf="!professional.leader">{{'non-renseigné' | translate}}</span>
+          </div>
+          <div class="margin-20">
+            <label class="label-legal">N° SIRET :</label>
+            <span class="non-renseigne" *ngIf="professional.siret">{{professional.siret}}</span>
+            <span class="non-renseigne" class="non-renseigne"
+              *ngIf="!professional.siret">{{'non-renseigné' | translate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-menubar clearfix" class="col-md-6">
+      <div class="col-md-12 info-legales">
+        <div class="col-md-12 col-xs-12 form-group second-part">
+
+          <div class="form-group first-part">
+            <h4 class="legal-information "> &nbsp;</h4>
+            <div class="margin-20">
+              <label class="label-legal">{{'creation' | translate}} :</label>
+              <span class="non-renseigne" *ngIf="professional.since">{{professional.since}}</span>
+              <span class="non-renseigne" *ngIf="!professional.since">{{'non-renseigné' | translate}}</span>
+            </div>
+            <div class="margin-20">
+              <label class="label-legal">{{'effectif' | translate}} :</label>
+              <span class="non-renseigne" *ngIf="professional.effective > 0">{{professional.effective}}</span>
+              <span class="non-renseigne"
+                *ngIf="professional.effective <= 0 || professional.effective == null ">{{'non-renseigné' | translate}}</span>
+            </div>
+            <div class="margin-20">
+              <label class="label-legal">{{'Assurance responsabilité civile' | translate}} :</label>
+              <span class="non-renseigne" *ngIf="professional.insurance">{{'yes' | translate}}</span>
+              <span class="non-renseigne" *ngIf="!professional.insurance">{{'no' | translate}}</span>
+            </div>
+            <div class="margin-20">
+              <label *ngIf="professional.startedSince" class="label-legal">{{'partenaire' | translate}}:</label>
+              <span *ngIf="professional.startedSince">{{professional.startedSince | date}}</span>
+              <span *ngIf="!professional.startedSince"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 tab-menubar clearfix document">
+    <div class="col-md-12 doc-container">
+      <div class="col-md-12 col-xs-12 form-group doc-content">
+        <h4 class="legal-information">{{'mes-doc-officiel' | translate}}</h4>
+        <div class="docs">
+          <a class="doc" *ngIf="professional.kbisDoc" href="{{professional.kbisDoc.webPath}}" target="_blank"><img
+              src="../../assets/img/document.png" width="50px" height="50px">{{'KBIS' | translate}}</a>
+          <span *ngIf="!professional.kbisDoc"><strong>{{'KBIS' | translate}}
+              :</strong>{{'non-renseigné' | translate}}</span>
+          <a class="doc" *ngIf="professional.insuranceDoc" href="{{professional.insuranceDoc.webPath}}"
+            target="_blank"><img src="../../assets/img/document.png" width="50px" height="50px"> ARCP *</a>
+          <span *ngIf="!professional.insuranceDoc"><strong>ARCP * :</strong>
+            {{'non-renseigné' | translate}}</span>
+          <a class="doc" *ngIf="professional.guaranteeDoc" href="{{professional.guaranteeDoc.webPath}}"
+            target="_blank"><img src="../../assets/img/document.png" width="50px"
+              height="50px">{{'garantie' | translate}} </a>
+          <span *ngIf="!professional.guaranteeDoc"><strong>{{'garantie' | translate}} :</strong>
+            {{'non-renseigné' | translate}}</span>
+        </div>
+        <br />
+        <p id="arcp">ARCP*: {{'arcp-profil' | translate}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="post-demand-container">
+  <div class="post-demand">
+    <header id="title-section">
+      <h4 class="section-title">{{'create-demand' | translate}}</h4>
+    </header>
+    <section>
+      <p class="description-post-demand">{{'post-demand' | translate}}</p>
+      <p class="description-post-demand advantage">{{'advantages-post-demand' | translate}}</p>
+      <div class="post-container">
+        <header *ngIf="!isConnected">
+          <a id="post-demand" [routerLink]="['/demande/particulier']">{{'post' | translate}}</a>
+        </header>
+      </div>
+    </section>
+  </div>
+</div>

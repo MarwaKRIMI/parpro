@@ -1,0 +1,91 @@
+.header-edit-profile {
+  text-align: center;
+  top: -50px;
+  margin-bottom: 50px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+}
+#imageUpload{
+  width:100%
+}
+.header-edit-profile {
+  text-align: center;
+  margin-top: -20px;
+}
+
+.parameter {
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  font-size: 25px;
+}
+
+.avatar-upload {
+  margin-top: -1px;
+}
+
+.btn-modify-parameter {
+  margin-top: 30px;
+}
+
+
+
+/*iPhone 5/SE*/
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+
+}
+/*Galaxy S5*/
+@media only screen and (max-width: 640px) and (min-width: 360px) {
+  .parameter {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .btn-modify-parameter {
+    text-align: center;
+    margin-right: 25%;
+    margin-top: 30px;
+  }
+ .avatar-upload{
+  margin:auto;
+  margin-bottom: 35px;
+ }
+
+}
+
+
+/*iPhone X*/
+@media only screen and (height: 812px) and (width: 375px) {
+  .photo{
+    margin-left:-3%
+  }
+}
+/*iPad*/
+@media only screen and (height: 1024px) and (width: 768px) {
+  .header-edit-profile {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+    margin-top:-20%
+  }
+  .photo{
+    margin-left:-2%
+  }
+}
+/*iPad PRO*/
+@media only screen and (height: 1366px) and (width: 1024px) {
+  .header-edit-profile {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+    margin-top:-20%
+  }
+}
+@media (max-width: 600px) {
+  .header-edit-profile{
+    margin-top:35% !important;
+    margin-bottom:-10%;
+  }
+}

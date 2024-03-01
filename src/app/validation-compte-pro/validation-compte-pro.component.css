@@ -1,0 +1,270 @@
+.validation-compte-pro-header {
+  margin-bottom: 50px;
+  margin-left: -30px;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.header{
+  display:flex;
+  
+ }
+#header-container {
+  margin-left: -70px;
+}
+
+p {
+  font-size: 16px;
+  text-justify: inter-word;
+  line-height: 2;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #404040
+}
+
+h4 {
+  text-justify: inter-word;
+  line-height: 1.5;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+a {
+  font-size: 16px;
+
+}
+
+#email-pro {
+  color: #202020;
+  font-weight: bolder;
+
+}
+
+#activation-mail-pro,
+#change-mail-pro {
+  color: #0099CC;
+  cursor: pointer;
+}
+
+#pro-man {
+  margin-top: -100px;
+  margin-left: 50px;
+}
+
+
+
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+  .validation-compte-pro-header {
+    text-align: start;
+    margin-top: 45px;
+    margin-left: -75px;
+
+    font-size: 11px;
+
+  }
+  .validation-header{
+    text-align: start
+    
+  }
+
+
+  .body {
+    margin-top: -65px;
+  }
+
+  p {
+    font-size: 11px;
+    text-justify: inter-word;
+    line-height: 1.8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #404040
+  }
+
+  a {
+    font-size: 11px;
+    font-weight: bold;
+
+  }
+
+  h4 {
+    text-justify: inter-word;
+    line-height: 1.6;
+    font-weight: bold;
+    font-size: 11px;
+    margin-top: -20px;
+  }
+}
+
+/*Galaxy S5*/
+@media only screen and (max-width: 640px) and (min-width: 360px) {
+  .validation-compte-pro-header {
+    text-align: start;
+    margin-top: 45px;
+    line-height: 2;
+    font-size: 12.5px;
+    margin-left:-80px;
+
+  }
+
+  .header {
+    margin-top: -35px;
+  }
+
+  .body {
+    margin-top: -65px;
+  }
+
+  p {
+    font-size: 11.5px;
+    text-justify: inter-word;
+    line-height: 1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #404040
+  }
+
+  a {
+    font-size: 11px;
+    font-weight: bold;
+
+  }
+
+  h4 {
+    text-justify: inter-word;
+    line-height: 2.4;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: -10px;
+  }
+
+}
+/*Pixel 2XL*/
+@media only screen and (max-width: 823px) and (min-width: 411px) {
+  .header {
+    margin-top: -75px;
+  }
+}
+/*iPhone 6/7/8*/
+@media only screen and (max-width: 667px) and (min-width: 375px) {
+}
+/*iPhone X*/
+@media only screen and (max-width: 812px) and (min-width: 375px) {
+  .header {
+    margin-top: -60px;
+  }
+}
+/*iPad*/
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .validation-compte-pro-header {
+    text-align: start;
+    margin-top: 50px;
+    font-size: 15px;
+    margin-left: -250px;
+
+  }
+
+  p {
+    font-size: 12px;
+    text-justify: inter-word;
+    line-height: 1.8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #404040
+  }
+
+  a {
+    font-size: 11px;
+    font-weight: bold;
+
+  }
+#pro-man{
+  margin-top:20px;
+}
+  h4 {
+    text-justify: inter-word;
+    line-height: 2;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: -10px;
+  }
+
+  #email-pro {
+    color: #202020;
+    font-weight: bolder;
+
+  }
+
+  #change-mail-pro,
+  #activation-mail-pro {
+    color: #0099CC;
+    cursor:pointer;
+  }
+
+  .header {
+    margin-top: -150px;
+  }
+
+  .body {
+    margin-top: -65px;
+  }
+}
+/*iPad PRO*/
+@media only screen and (max-width: 1366px) and (min-width: 1024px) {
+  .validation-compte-pro-header {
+    text-align: start;
+    margin-left: -15px;
+    font-size: 18px;
+
+  }
+
+  p {
+    font-size: 13px;
+    text-justify: inter-word;
+    line-height: 1.8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #404040
+  }
+
+  a {
+    font-size: 13px;
+    font-weight: bold;
+
+  }
+
+  h4 {
+    text-justify: inter-word;
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: -10px;
+  }
+
+  #email-pro {
+    color: #202020;
+    font-weight: bolder;
+
+  }
+
+  #change-mail-pro,
+  #activation-mail-pro {
+    color: #0099CC;
+    cursor: pointer;
+  }
+
+ 
+  
+
+  .body {
+    margin-top: -65px;
+  }
+  .pro-man{
+    margin-top: -80px;
+    margin-left: 70px;
+  }
+}
+@media (max-width: 600px) {
+
+.header{
+  margin-top: 15%;
+}
+.sablier{
+  margin-top:2% !important;
+}
+}

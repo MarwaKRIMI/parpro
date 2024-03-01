@@ -1,0 +1,394 @@
+<ngx-alerts></ngx-alerts>
+
+<h4 class="part-account-title">{{'title-request-part' | translate}}</h4>
+<h2 *ngIf="getRole() == 'Professional' ||!isLogged() " class="part-new-account-header">{{'part-account'| translate}}</h2>
+<h2 *ngIf="getRole() == 'Particular' && !modeEdit" class="part-new-account-header">{{'Déposer-demande' | translate}}</h2>
+<h2 *ngIf="getRole() == 'Particular' && modeEdit " class="part-new-account-header">{{'edit-demand' | translate}}</h2>
+<div class="row">
+  <div class="col-md-8">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <!-- <label for="activity">Activité : </label>
+                                <select id="activity" class="form-control" name="activity" [(ngModel)]="demand.activity" #activity="ngModel" [ngClass]="{ 'is-invalid': f.submitted && activity.invalid }" required >
+                                        <option disabled hidden [value]="null">Activité</option>
+                                      <option [value]="act.id" *ngFor="let act of activities">{{act.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && activity.invalid" class="invalid-feedback">
+                                <div *ngIf="activity.errors.required">Activité</div>
+                                </div> -->
+            <ng-select [items]="activities" [multiple]="false" [closeOnSelect]="true" [searchable]="true"
+              bindLabel="name" bindValue="id" placeholder="{{'select-activity' | translate}}" [(ngModel)]="demand.activity"
+              name="activity" #activity="ngModel" required [disabled]="rightUrl"
+              [ngClass]="{ 'is-invalid': f.submitted && activity.invalid }">
+
+            </ng-select>
+            <div *ngIf="f.submitted && activity.invalid" class="invalid-feedback">
+              <div *ngIf="activity.errors.required">{{'activity-required' | translate}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- <div class="form-group pull-right" *ngIf="!isLogged()">
+                                <label for="lang">Langue parlée : </label>
+                                <select class="form-control custom-select" name="lang" [(ngModel)]="selectedLang" #lang="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lang.invalid }" [required]="!isLogged()" >
+                                    <option [value]="language.id" *ngFor='let language of langs'>{{language.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && lang.invalid" class="invalid-feedback">
+                                <div *ngIf="lang.errors.required">Langue parlée requis</div>
+                                </div>
+                            </div> -->
+          <div class="form-group" *ngIf="!isLogged()">
+            <ng-select [items]="langs" [multiple]="true" [closeOnSelect]="false" [searchable]="false" bindLabel="name"
+              bindValue="id" placeholder="{{'lang'| translate}}" [(ngModel)]="selectedLang" name="lang" [disabled]="rightUrl">
+            </ng-select>
+            <!-- <div *ngIf="f.submitted && lang.invalid" class="invalid-feedback">
+                                    <div *ngIf="lang.errors.required">Langue parlée requis</div>
+                                </div> -->
+          </div>
+
+        </div>
+      </div>
+      <div class="row mg-top-20">
+        <!--titre du projet-->
+
+        <div>
+          <div class="form-group title-part">
+            <label for="title">{{'project-title' | translate}} : </label>
+            <input type="text" class="form-control" name="title" [(ngModel)]="demand.title" #title="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required [disabled]="rightUrl" />
+            <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+              <div *ngIf="title.errors.required">{{'required-title' | translate}}</div>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="!modeEdit && !isLogged() || getRole() == 'Professional'" class="col-md-6 genre"><label>{{'gender' | translate}}
+            :</label> <br>
+          <br>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="owner" [(ngModel)]="owner.civility"
+              #ownerControl="ngModel" id="exampleRadios1" [value]="1" [disabled]="rightUrl">
+            <label class="form-check-label" for="exampleRadios1">
+              {{'M' | translate}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="owner" [(ngModel)]="owner.civility"
+              #ownerControl="ngModel" id="exampleRadios2" [value]="2" [disabled]="rightUrl">
+            <label class="form-check-label" for="exampleRadios2">
+              {{'F'| translate}}
+            </label>
+          </div>
+
+        </div>
+        <!--Description du projet-->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="description">{{'project-decription' | translate}} : </label>
+            <textarea class="form-control" name="description" [(ngModel)]="demand.description" #description="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && description.invalid  }" required
+              [disabled]="rightUrl"></textarea>
+            <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+              <div *ngIf="description.errors.required">{{'description-requise' | translate}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row mg-top-20">
+        <div class="col-md-6">
+          <!--firstName-->
+          <div class="form-group" *ngIf="!isLogged()">
+            <label for="firstName">{{'prenom' | translate}} : </label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="owner.firstName" #firstName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" [required]="!isLogged()"
+              [disabled]="rightUrl" />
+            <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+              <div *ngIf="firstName.errors.required">{{'required-firstname' | translate}}</div>
+            </div>
+          </div>
+
+          <!--lastName-->
+          <div class="form-group" *ngIf="!isLogged()">
+            <label for="lastName">{{'Nom' | translate}} :</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="owner.lastName" #lastName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" [required]="!isLogged()"
+              [disabled]="rightUrl" />
+            <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+              <div *ngIf="lastName.errors.required">{{'required-lastname' | translate}}</div>
+            </div>
+          </div>
+          <!--Adresse-->
+          <div class="form-group">
+            <label for="address">{{'adresse' | translate}} : </label>
+            <input type="text" class="form-control" value={{adresse}} name="address"
+              [(ngModel)]="demand.address.address" #address="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required [disabled]="rightUrl" />
+            <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+              <div *ngIf="address.errors.required">{{'required-adress' | translate}}</div>
+            </div>
+          </div>
+          <!--Code Postal-->
+          <div class="form-group">
+            <label for="zipCode">{{'zipcode' | translate}} : </label>
+            <input google-place type="number" class="form-control" value="{{code_postal}}" name="zipCode"
+              [(ngModel)]="demand.address.zipCode" #zipCode="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && zipCode.invalid }" required [disabled]="rightUrl"
+              onKeyPress="if(this.value.length==5) return false;" (onSelect)="setAddress($event)" placeholder="" />
+            <div *ngIf="f.submitted && zipCode.invalid" class="invalid-feedback">
+              <div *ngIf="zipCode.errors.required">{{'required-zipcode' | translate}}</div>
+            </div>
+          </div>
+          <!--Ville-->
+          <div class="form-group">
+            <label for="city">{{'ville' | translate}} : </label>
+
+            <input type="text" class="form-control" value="{{ville}}" name="city" [(ngModel)]="demand.address.city"
+              #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required [disabled]="rightUrl"
+              placeholder="" />
+            <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+              <div *ngIf="city.errors.required">{{'required-city' | translate}}</div>
+            </div>
+          </div><br>
+          <!--Pays-->
+
+          <div class="form-group">
+            <ng-select [multiple]="false" [closeOnSelect]="false" [searchable]="false" bindLabel="{{pays}}"
+              bindValue="{{pays}}" placeholder="{{'pays' | translate}} :" [(ngModel)]="demand.address.country" name="country"
+              [disabled]="rightUrl">
+            </ng-select>
+
+
+          </div>
+          <div class="form-group">
+
+
+            <input type="hidden" class="form-control" value="{{lat}}" name="lat" [(ngModel)]="demand.address.latitude"
+              #lat="ngModel" [disabled]="rightUrl" placeholder="" />
+
+          </div>
+          <div class="form-group">
+
+
+            <input type="hidden" class="form-control" value="{{lng}}" name="lng" [(ngModel)]="demand.address.longitude"
+              #lng="ngModel" [disabled]="rightUrl" placeholder="" />
+
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <!--Numéro de téléphone-->
+          <div class="form-group" *ngIf="!isLogged()">
+            <label for="phone">{{'phone-number' | translate}} : </label>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="owner.phone" #phone="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" [required]="!isLogged()" [disabled]="rightUrl"
+              maxlength="10" />
+            <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+              <div *ngIf="phone.errors.required">{{'required-phone' | translate}}</div>
+            </div>
+          </div>
+          <!-- Email-->
+          <div class="form-group email" *ngIf="!isLogged()">
+            <label for="addressEmail">{{'email' | translate}} :</label>
+            <input type="email" class="form-control" name="addressEmail" [(ngModel)]="owner.email"
+              #addressEmail="ngModel" [ngClass]="{ 'is-invalid': f.submitted && addressEmail.invalid }"
+              [required]="!isLogged()" email />
+            <div *ngIf="f.submitted && addressEmail.invalid" class="invalid-feedback">
+              <div *ngIf="addressEmail.errors.required">{{'required-email' | translate}}</div>
+              <div *ngIf="addressEmail.errors.email">{{'invalid-email' | translate}}</div>
+            </div>
+          </div>
+          <!--Mot de passe-->
+          <div class="form-group" *ngIf="!this.isLogged()">
+            <label for="plainPassword">{{'psw' | translate}} :</label>
+            <input type="password" class="form-control" name="plainPassword" [(ngModel)]="password.first"
+              #plainPassword="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && (plainPassword.invalid || password.first != password.second) }"
+              [required]="!this.isLogged()" minlength="6" [disabled]="rightUrl" />
+            <div *ngIf="f.submitted && plainPassword.invalid" class="invalid-feedback">
+              <div *ngIf="plainPassword.errors.required">{{'required-psw' | translate}}</div>
+              <div *ngIf="plainPassword.errors.minlength">{{'required-psw-length' | translate}}</div>
+            </div>
+          </div>
+          <!--Confirmation Mot de passe-->
+          <div class="form-group" *ngIf="!this.isLogged()">
+            <label for="secPassword">{{'psw-confirm' | translate}} :</label>
+            <input type="password" class="form-control" name="secPassword" [(ngModel)]="password.second"
+              #secPassword="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && (secPassword.invalid || password.first != password.second) }"
+              minlength="6" [required]="!this.isLogged()" [disabled]="rightUrl" />
+            <div *ngIf="f.submitted && secPassword.invalid" class="invalid-feedback">
+              <div *ngIf="secPassword.errors.required">{{'required-psw' | translate}}</div>
+              <div *ngIf="secPassword.errors.minlength">{{'required-psw-length' | translate}}</div>
+            </div>
+          </div>
+          <!--Ajout des photos-->
+          <label>{{'add-photos' | translate}} : <span class="help-block">( {{'facultatif' | translate}})</span></label>
+          <span class="help-block">{{'photo-nombre' | translate}}</span>
+
+
+          <div class="upload-list">
+            <div class="avatar-upload" *ngFor="let indImage of images">
+              <div class="avatar-edit">
+                <input type="file" id="imageUpload{{indImage}}" accept=".png, .jpg, .JPEG, .jpeg, .MP3"
+                  (change)="readURL($event, indImage);">
+                <label for="imageUpload{{indImage}}"></label>
+              </div>
+              <div class="avatar-preview"
+                [style.content]="!(imageSrc && imageSrc[indImage]) ? 'url(/assets/img/avater_upload_part.png)' : ''">
+                <div id="imagePreview" *ngIf="imageSrc && imageSrc[indImage]"
+                  [style.background-image]="makeTrustedImage(imageSrc[indImage])">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <span class="btn-add-photo" *ngIf="images.length <12" (click)="addPhoto()">+ {{'Ajout-photo' | translate}}</span>
+
+
+
+          <button class="btn btn-primary btn-block mg-top-20"
+            [ngClass]="{'button-loader button-loader--loading' : loading}" type="submit" name="action"
+            *ngIf="!modeEdit && isLogged() && getRole() != 'Professional'" [disabled]="loading">{{'Add-demand' | translate}}</button>
+          <button [ngClass]="{'button-loader button-loader--loading' : loading}"
+            class="btn btn-primary btn-block mg-top-20" type="submit" name="action" *ngIf='modeEdit'>{{'edit-my-demand' | translate}}</button>
+
+          <!-- Acceptation condition et checkbox-->
+
+        </div>
+      </div>
+      <div class="row footer-form" align="center">
+        <!--Bouton Obtenir un devis gratuit-->
+        <div class="col-md-12 form-group btn-accept-condition">
+
+          <button class="btn btn-primary btn-block mg-top-25 obtenir"
+            [ngClass]="{'button-loader button-loader--loading' : loading}" type="submit" name="action"
+            *ngIf="!modeEdit && !isLogged() || getRole() == 'Professional'"
+            title="Veuillez accepter nos conditions">{{'free-devis' | translate}}
+          </button>
+
+          <p *ngIf="!modeEdit && !isLogged() || getRole() == 'Professional'" class="accept-cond-par">{{'accept-cond-part-1' | translate}}<a id="condition-utilisation-part" href=''
+              [routerLink]="['/conditions-generales-utilisations']" data-toggle="modal" data-target="#CGU">{{'CGU' | translate}}</a>{{'accept-cond-part-2' | translate}}
+            sa <a id="politique-confidentialite-part" href='' [routerLink]="['/politique-confidentialite']"
+              data-toggle="modal" data-target="#PC">{{'PC' | translate}}</a>.
+           {{'accept-cond-part-3' | translate}}<a
+              id="email-website-part">dpo@parpro.fr</a>.
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4 col-sm-8 col-sm-offset-0 col-xs-12 speech-bubble-container bubble-style" ngx-auto-scroll>
+    <div class="vertical-comments" [@listAnimation]="comments.length">
+      <div *ngFor="let comment of comments" class="speech-bubble">
+        <p class="comment-text">{{comment.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row advantage advantage-margin">
+  <div class="col-md-4">
+    <img src="../../assets/img/watch.png" class="img-responsive center-block" width="30px">
+    <p class="text-center">{{'advantage-1' | translate}}</p>
+  </div>
+  <div class="col-md-4">
+    <img src="../../assets/img/multi-arrows.png" class="img-responsive center-block" width="30px">
+    <p class="text-center">{{'advantage-2' | translate}}</p>
+  </div>
+  <div class="col-md-4">
+    <img src="../../assets/img/dollar.png" class="img-responsive center-block" width="30px">
+    <p class="text-center">{{'advantage-3' | translate}}</p>
+  </div>
+</div>
+<!--Statistiques-->
+<div class="statistique">
+  <div class="row stats">
+    <div class="col-md-3">
+      <div class="c100 p50 big">
+        <div class="text">
+          <span>{{'demand-nombre-title' | translate}}</span>
+          <span class="description"> {{'demand-nombre' | translate}}
+          </span>
+        </div>
+
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="c100 p50 big">
+        <div class="text">
+          <span>{{'project-nombre-title' | translate}} </span>
+          <span class="description">{{'project-nombre' | translate}}</span>
+        </div>
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="c100 p70 big">
+        <div class="text">
+          <span>{{'heure-nombre-title' | translate}}</span>
+          <span class="description">{{'heure-nombre' | translate}}</span>
+        </div>
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="c100 p80 big">
+        <div class="text">
+          <span>{{'prestataire-title' | translate}} </span>
+          <span class="description">{{'prestataire' | translate}} 
+          </span>
+        </div>
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal CGU-->
+<div class="modal fade" id="CGU" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <!-- Add #closeBtn -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal body -->
+        <fws-cond-gen></fws-cond-gen>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal PC-->
+<div class="modal fade" id="PC" tabindex="-1" role="dialog" aria-labelledby="addProbModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <!-- Add #closeBtn -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal body -->
+        <fws-politique></fws-politique>
+      </div>
+    </div>
+  </div>
+</div>

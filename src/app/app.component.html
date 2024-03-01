@@ -1,0 +1,40 @@
+<fws-header>
+
+</fws-header>
+
+<!--Body-->
+<div class="container body-content">
+    <alert></alert>
+    <router-outlet></router-outlet>
+
+</div>
+<a id="goto-site" [routerLink]="['site-internet']"><img id="website-img" height="180px" src="../assets/img/site.png"></a>
+<!--Footer-->
+<div class="footer-social">
+    <social-media></social-media>
+    <footer class="footer text-center">
+
+        <div class="container">
+
+            <div class="col-md-2">
+                <a href="" [routerLink]="['/mentions-legales']">{{ 'Mention legales' | translate}}</a>
+            </div>
+            <div class="col-md-2">
+                <a href="" [routerLink]="['/conditions-generales-utilisations']">{{ 'CGU' | translate}}</a>
+            </div>
+            <div class="col-md-2">
+                <a href="" [routerLink]="['/conditions-generales-vente']">{{ 'CGV' | translate}}</a>
+            </div>
+            <div class="col-md-2">
+                <a href="" [routerLink]="['/politique-confidentialite']">{{ 'PC' | translate}}</a>
+            </div>
+            <div class="col-md-2">
+                <a href="" [routerLink]="['/qui-sommes-nous']">{{ 'QuiSommeNous' | translate}}</a>
+            </div>
+            <div class="col-md-2">
+                <a id="contact-us">{{ 'ContactUs' | translate}} : </a><br>
+                <a href="">04 22 48 05 59</a>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -1,0 +1,216 @@
+@import '../cond-gen-ventes/cond-gen-ventes.component.css';
+
+.tarif-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.first-paragraph {
+  font-size: 17px;
+}
+
+.form-control {
+  border-bottom: none;
+}
+
+.convince-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5%
+}
+
+.startup-offer {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.tarif-offre {
+  margin-left: 5px;
+}
+
+.advantages-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.advantages-ligns {
+  font-size: 17px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.advantages-second-ligns {
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.advantages-ligns-right {
+  font-size: 17px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.last-text,
+.last-text-pay {
+  font-size: 10px;
+  margin-top: 250px;
+  text-align: justify;
+  margin-bottom: -300px;
+  margin-left: 20px;
+}
+
+.button-payment {
+
+  padding: 15px 60px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.container-button {
+  text-align: end;
+  margin-top: 70px;
+}
+
+.payment-hand {
+  margin-right: 10px;
+  font-size: 35px;
+  margin-top: 10px;
+}
+
+.last-text {
+  text-align: justify;
+}
+
+sup {
+  font-size: 10px;
+}
+
+#CCV_payement {
+  font-weight: bold;
+  color: #001847;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.CCV_payement {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: gray;
+  margin-top: 12px;
+  margin-left: 20px;
+}
+
+input[type=checkbox] {
+  opacity: 1;
+  left: 0;
+  margin-top: 15px;
+  margin-right: 10px
+}
+
+@media (max-width: 600px) {
+  .tarif-header {
+    text-align: center;
+    margin-bottom: 10%;
+    margin-top: 20%;
+    font-weight: 600;
+  }
+
+  .container-button {
+    text-align: end;
+    margin-top: -50px;
+  }
+
+  input[type=checkbox] {
+    margin-left: 10px;
+    opacity: 1;
+    left: 0;
+  }
+
+  .CCV_payement {
+    font-size: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    text-align: justify
+  }
+
+  .last-text,
+  .last-text-pay {
+    font-size: 0.8em;
+    margin-left: 0px;
+
+  }
+
+  p,
+  .advantages-second-ligns {
+    font-size: 0.9em !important
+  }
+
+  .advantages-title,
+  .convince-title,
+  .advantages-ligns,
+  .advantages-ligns-right {
+    font-size: 1.1em;
+  }
+
+  .base {
+    margin-top: -15% !important
+  }
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+.pay-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*iPad*/
+@media only screen and (height: 1024px) and (width: 768px) {
+  .tarif-header {
+    text-align: center;
+    margin-bottom: 10%;
+    margin-top: -10% !important;
+    font-weight: 600;
+  }
+
+  .pay {
+    font-size: 15px;
+    margin-bottom: 15px;
+    margin-left: 45%;
+    text-align: justify
+  }
+}
+
+/*iPad PRO*/
+@media only screen and (height: 1366px) and (width: 1024px) {
+  .tarif-header {
+    text-align: center;
+    margin-bottom: 10%;
+    margin-top: -20% !important;
+    font-weight: 600;
+    font-size: 2.5em !important
+  }
+
+  .convince-title {
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .advantages-title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+}
+
+@media only screen and (height: 568px) and (width: 320px) {
+  .pay {
+    margin-top: -115% !important;
+  }
+}

@@ -1,0 +1,136 @@
+.user-img {
+  position: fixed;
+  height: 100%;
+  background-size: contain;
+  width: 240px;
+  right: 15%;
+  background-repeat: no-repeat;
+  background-image: url('/assets/img/pro-man.png');
+}
+
+.title-about-pro {
+  font-weight: bold;
+  margin-bottom: 50px;
+  font-size: 2.2em
+}
+
+p,
+.parpro-more-info {
+
+  font-size: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.4;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-justify: auto;
+  color: #404040;
+  font-weight: 500
+}
+
+.free-parpro {
+  color: #001847;
+  text-align: start;
+  margin: 10px auto;
+
+}
+
+.strong {
+  margin-bottom: 20px;
+}
+
+.btn-block {
+  width: 50%;
+  margin-left: 10%;
+}
+
+@media (max-width: 700px) {
+  .btn-block {
+    width: 100%;
+    margin-left: 0%;
+    padding: 10px !important;
+
+  }
+
+  .title-about-pro {
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 2em !important;
+    margin-top:20% !important
+  }
+
+  .about-pro {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  strong, .about-pro{
+    font-size:1.4em
+  }
+  .more-info-description{
+    margin-top:30% !important
+  }
+
+}
+
+/*iPhone 5/SE*/
+@media only screen and (width: 320px) and (height: 568px) {
+  .title-about-pro {
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 1.8em;
+    margin-top: 30%;
+  }
+}
+
+/*Galaxy S5*/
+@media only screen and (width: 320px) and (height: 568px) {
+  .title-about-pro {
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 1.8em;
+    margin-top: 30%;
+  }
+
+  .btn-block {
+    font-size: 12px;
+    width: 102% !important;
+
+  }
+}
+
+/*iPad PRO*/
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .btn-block {
+    width: 60%;
+    margin-left: 20%;
+
+  }
+
+  .more-info-description {
+    margin-top: -15%;
+  }
+
+  .user-img {
+    position: fixed;
+    height: 100%;
+    background-size: contain;
+    width: 160px;
+    right: 15%;
+    margin-top: -10px;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/pro-man.png');
+  }
+}
+
+/*iPad*/
+@media only screen and (width: 768px) and (height: 1024px) {
+  .btn-block {
+    width: 60%;
+    margin-left: 20%;
+
+  }
+
+  .more-info-description {
+    margin-top: -15%;
+  }
+
+}

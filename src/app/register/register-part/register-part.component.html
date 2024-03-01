@@ -1,0 +1,136 @@
+<h2 style='margin-bottom:50px'>Créer un compte PARTICULIER</h2>
+<div class="row">
+  <div class="col-md-8">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="col-md-6">
+        <!--Firstname-->
+        <div class="form-group">
+          <label for="firstName">Prénom : </label>
+          <input type="text" class="form-control" placeholder="Taper votre texte ici" name="firstName" [(ngModel)]="particular.firstName"
+            #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+          <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+            <div *ngIf="firstName.errors.required">Prénom requis</div>
+          </div>
+        </div>
+        <!--lastname-->
+
+        <div class="form-group">
+          <label for="lastName">Nom :</label>
+          <input type="text" class="form-control" placeholder="Taper votre texte ici" name="lastName" [(ngModel)]="particular.lastName"
+            #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+          <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+            <div *ngIf="lastName.errors.required">Nom est requis</div>
+          </div>
+        </div>
+        <!--Email-->
+
+        <div class="form-group">
+          <label for="addressEmail">Email</label>
+          <input type="email" class="form-control" name="addressEmail" placeholder="Taper votre texte ici" [(ngModel)]="particular.email"
+            #addressEmail="ngModel" [ngClass]="{ 'is-invalid': f.submitted && addressEmail.invalid }" required email />
+          <div *ngIf="f.submitted && addressEmail.invalid" class="invalid-feedback">
+            <div *ngIf="addressEmail.errors.required">Email requis</div>
+            <div *ngIf="addressEmail.errors.email">Email non valide</div>
+          </div>
+        </div>
+        <!--Password-->
+
+        <div class="form-group">
+          <label for="plainPassword">Mot de passe</label>
+          <input type="password" class="form-control" name="plainPassword" placeholder="Taper votre texte ici"
+            [(ngModel)]="particular.plainPassword.first" #plainPassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && (plainPassword.invalid || particular.plainPassword.first != particular.plainPassword.second) }"
+            required minlength="6" />
+          <div *ngIf="f.submitted && plainPassword.invalid" class="invalid-feedback">
+            <div *ngIf="plainPassword.errors.required">Mot de passe requis</div>
+            <div *ngIf="plainPassword.errors.minlength">Le mot de passe doit contenir au moins 6 caractères</div>
+          </div>
+        </div>
+        <!--Confirm password-->
+
+        <div class="form-group">
+          <label for="secPassword">Rétapez votre mot de passe</label>
+          <input type="password" class="form-control" name="secPassword" placeholder="Taper votre texte ici"
+            [(ngModel)]="particular.plainPassword.second" #secPassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && (secPassword.invalid || particular.plainPassword.first != particular.plainPassword.second) }"
+            required minlength="6" />
+          <div *ngIf="f.submitted && secPassword.invalid" class="invalid-feedback">
+            <div *ngIf="secPassword.errors.required">Mot de passe requis</div>
+            <div *ngIf="secPassword.errors.minlength">Le mot de passe doit contenir au moins 6 caractères</div>
+          </div>
+        </div>
+        <!--Inscription button-->
+        <button class="btn btn-primary" type="submit" name="action">Je m'inscris gratuitement</button>
+      </div>
+
+
+      <div class="col-md-6">
+        <!--Adresse-->
+        <div class="form-group">
+          <label for="address">Address : </label>
+          <input type="text" class="form-control" placeholder="Taper votre texte ici" name="address" [(ngModel)]="particular.address.address"
+            #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required />
+          <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+            <div *ngIf="address.errors.required">Adresse requise</div>
+          </div>
+        </div>
+        <!--Ville-->
+        <div class="form-group">
+          <label for="city">Ville : </label>
+          <input type="text" class="form-control" placeholder="Taper votre texte ici" name="city" [(ngModel)]="particular.address.city"
+            #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required />
+          <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+            <div *ngIf="city.errors.required">Ville requise</div>
+          </div>
+        </div>
+        <!--Pays-->
+        <div class="form-group">
+          <label for="country">Pays : </label>
+          <select class="form-control" name="country" [(ngModel)]="particular.address.country" #country="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && country.invalid }" required>
+            <option *ngFor="let ct of countries" [value]="ct.name">{{ct.name}}</option>
+          </select>
+          <div *ngIf="f.submitted && country.invalid" class="invalid-feedback">
+            <div *ngIf="country.errors.required">Pays requis</div>
+          </div>
+        </div>
+        <!--Code postal-->
+        <div class="form-group">
+          <label for="zipCode">Code postal : </label>
+          <input type="text" class="form-control" placeholder="Taper votre texte ici" name="zipCode" [(ngModel)]="particular.address.zipCode"
+            #zipCode="ngModel" [ngClass]="{ 'is-invalid': f.submitted && zipCode.invalid }" required />
+          <div *ngIf="f.submitted && zipCode.invalid" class="invalid-feedback">
+            <div *ngIf="zipCode.errors.required">Code postal requis</div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
+
+
+<div class="row text-center stats-box" style="margin-top:10%">
+  <div class="col-md-4">
+    <h4>Comment ça marche ?</h4>
+    <p>S'inscrire en ligne gratuitement</p>
+    <p>Etre informé a tout moment des demandes de travaux appropriées dans votre région.</p>
+    <p>Acceptez vos projets souhaités et contactez immédiatement vos clients.</p>
+    <p>Votre entreprise peut-etre trouvée sur internet et meme su google.</p>
+  </div>
+  <div class="col-md-4">
+    <h4>Statistiques</h4>
+    <p>Plus de 850,000 projets déja traités</p>
+    <p>Des demandes de traveaux dans tous les métiers / secteurs, dans toutes la france et das votre région .</p>
+    <p>Nous défendons la qualité et les prix équitables</p>
+  </div>
+  <div class="col-md-4">
+    <h4>Qualité et Sécurité</h4>
+    <p>La saisie automatique de votre demande.</p>
+    <p>La protection de vos données personelles</p>
+    <p>La diffusion de votre demande sur le plus grand réseaux de travaux en france.</p>
+  </div>
+</div>
